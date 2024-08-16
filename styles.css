@@ -6,12 +6,12 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Minecraftia', sans-serif; /* Fallback to sans-serif if font is not loaded */
+    font-family: 'Minecraftia', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #f0f0f0, #d0e0ff); /* Subtle gradient background */
+    background: linear-gradient(135deg, #f0f0f0, #d0e0ff);
     overflow: hidden;
     transition: background 0.5s ease;
 }
@@ -19,25 +19,80 @@ body {
 .container {
     text-align: center;
     position: relative;
-    z-index: 1;
-    animation: fadeIn 2s ease-out; /* Fade-in animation */
+    z-index: 2;
+    animation: fadeIn 2s ease-out;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 h1 {
-    font-size: 4rem; /* Adjust size as needed */
+    font-size: 5vw;
     margin: 0;
-    color: #333; /* Dark text color for better readability */
+    color: #000;
     position: relative;
     animation: slideIn 1s ease-out;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
+    transition: transform 0.32s ease-out, color 0.3s ease, text-shadow 0.3s ease;
+    cursor: default;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1.hovered {
+    transform: scale(1.05);
+    transition: transform 0.32s ease-out;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1:not(.hovered) {
+    transition: transform 0.64s ease-out, text-shadow 0.64s ease-out;
+}
+
+h1 sup {
+    font-size: 0.6em;
+    vertical-align: top;
+}
+
+h1 sup a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 20s infinite linear;
+    top: calc(var(--y) * 100%);
+    left: calc(var(--x) * 100%);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+    }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes slideIn {
@@ -51,13 +106,25 @@ h1 {
     }
 }
 
-/* Optional: Add a subtle shadow effect to the text */
-h1 {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+@keyframes rainbow {
+    0% { background: red; }
+    14% { background: orange; }
+    28% { background: yellow; }
+    42% { background: green; }
+    56% { background: blue; }
+    70% { background: indigo; }
+    84% { background: violet; }
+    100% { background: red; }
 }
 
-/* Optional: Add a slight hover effect on the container */
-.container:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+@media (max-width: 768px) {
+    h1 {
+        font-size: 7vw;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 9vw;
+    }
 }
