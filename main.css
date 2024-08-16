@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.gpd-header{
+  margin:0;
+}
+#izh8o{
+  display:none;
+}
+#irm3i{
+  display:none;
+}
+body{
+  color:#fff;
+  font-family:Helvetica, serif;
+  background-image:linear-gradient(rgba(1,1,2,0.68),rgba(1,1,2,0.68)), url('https://cdn.grapedrop.com/u98265e982f304167899b024e1512e4a7/bdef44ab53494cbab8245fb0f6998477_chunky-juke-design-process.jpg');
+  background-repeat:repeat, no-repeat;
+  background-position:left top, center center;
+  background-attachment:scroll, scroll;
+  background-size:auto, cover;
+}
+#irqj{
+  height:100vh;
+}
+#i72g{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#ilosz{
+  margin:0 0 35px 0;
+  letter-spacing:10px;
+  font-size:61px;
+  font-weight:100;
+  font-family:Impact, Charcoal, sans-serif;
+  text-transform:uppercase;
+}
+#iopx{
+  width:90%;
+  max-width:700px;
+  text-align:center;
+}
+.countdown{
+  text-align:center;
+  font-family:Helvetica, serif;
+  margin:0 0 25px 0;
+}
+.countdown-block{
+  display:inline-block;
+  margin-top:0px;
+  margin-right:10px;
+  margin-bottom:0px;
+  margin-left:10px;
+  padding-top:10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  padding-left:10px;
+}
+.countdown-digit{
+  font-size:5rem;
+  font-weight:100;
+  color:#10e57d;
+  max-width:550px;
+}
+.countdown-endtext{
+  font-size:5rem;
+}
+.countdown-cont{
+  display:inline-block;
+}
+.countdown-label{
+  font-weight:300;
+}
+.input{
+  height:40px;
+  background-color:rgba(255,255,255,0);
+  color:#ffffff;
+  border:2px solid rgba(255,255,255,0.55);
+}
+#ixuqp{
+  min-height:auto;
+}
+#i8t53{
+  margin:0 0 0 0;
+  align-items:center;
+}
+.button{
+  width:100%;
+  height:40px;
+  font-size:20px;
+  font-weight:100;
+  letter-spacing:4px;
+  background-color:rgba(16,229,125,0);
+  color:#10e57d;
+  border:2px solid #10e57d;
+}
+#i92we{
+  min-height:auto;
+  flex-basis:50%;
+  padding:0 0 0 15px;
+}
+#izh8o{
+  display:none;
+}
+#irm3i{
+  display:none;
+}
+.button:hover{
+  background-color:#10e57d;
+  color:#fff;
+}
+@media (max-width: 768px){
+  #i92we{
+    padding:15px 0 0 0;
+  }
+  #ixuqp{
+    padding:5px 0 5px 0;
+  }
+}
+@media (max-width: 375px){
+  .countdown-digit{
+    font-size:65px;
+  }
+  #ilosz{
+    font-size:26px;
+  }
+}
