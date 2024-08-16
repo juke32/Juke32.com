@@ -1,14 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World with Custom Font</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Hello World</h1>
+<div id="irqj" class="row">
+  <div id="i72g" class="cell">
+    <div id="iopx" data-anim-type="fadeIn" class="row">
+      <div id="i64cc" class="cell">
+        <h2 id="ilosz" data-anim-type="fadeIn" class="gpd-header">Coming soon
+        </h2>
+        <div id="ityf7">
+        </div>
+        <div id="izwui" class="countdown">
+        </div>
+        <form method="post" id="ir6av" data-redirect="">
+          <div data-form-state="success" id="izh8o" class="state-success">Thanks! We received your request
+          </div>
+          <div data-form-state="error" id="irm3i" class="state-error">An error occurred on processing your request, try again!
+          </div>
+        </form>
+      </div>
     </div>
-</body>
-</html>
+  </div>
+</div>
+<style>html {
+  scroll-behavior: smooth;
+  }
+</style>
+<script>var items = document.querySelectorAll('#ityf7');
+  for (var i = 0, len = items.length; i < len; i++) {
+    (function(){
+      var t=this,e=JSON.parse('["juke 1","juke 2","juke 3","juke 4","juke 5","juke 6","juke 7","juke 8","juke 9","juke 10","juke 11","juke 12","juke 13","juke 14","juke 15","juke 16","juke 17","juke 18","juke 19","juke 20","juke 21","juke 22","juke 23","juke 24","juke 25","juke 26","juke 27","juke 28","juke 29","juke 30","juke 31","juke 32"]'),n=function(t){
+        return parseInt(t,10)||0}
+      ,r=function(t){
+        return!!t}
+      ,o=function(){
+        var o=t;
+        o.innerHTML='<span></span>';
+        var i=parseInt('32',10),a={
+          typeSpeed:n('80'),startDelay:n('40'),backDelay:n('700'),backSpeed:n('60'),smartBackspace:r('true'),fadeOut:r(''),fadeOutClass:'typed-fade-out',fadeOutDelay:n('500'),shuffle:r(''),loop:r(''),loopCount:isNaN(i)?1/0:i,showCursor:r('true'),cursorChar:'|',autoInsertCss:r('true'),bindInputFocusEvents:r(''),attr:'',contentType:'html'};
+        e&&e.length&&(a.strings=e),new Typed(o.children[0],a)};
+      if(window.Typed)o();
+      else{
+        var i=document.createElement('script');
+        i.src='https://cdn.jsdelivr.net/npm/typed.js@2.0.11',i.onload=o,document.head.appendChild(i)}
+    }
+     .bind(items[i]))();
+  }
+  var items = document.querySelectorAll('#izwui');
+  for (var i = 0, len = items.length; i < len; i++) {
+    (function(){
+      var t=new Date("2020-12-28").getTime(),e=this.querySelector("[data-js=countdown]"),n=this.querySelector("[data-js=countdown-endtext]"),r=this.querySelector("[data-js=countdown-day]"),o=this.querySelector("[data-js=countdown-hour]"),i=this.querySelector("[data-js=countdown-minute]"),a=this.querySelector("[data-js=countdown-second]"),s=this.gjs_countdown_interval;
+      s&&s&&clearInterval(s);
+      var c=function(t,e,n,s){
+        r.innerHTML=t<10?"0"+t:t,o.innerHTML=e<10?"0"+e:e,i.innerHTML=n<10?"0"+n:n,a.innerHTML=s<10?"0"+s:s}
+      ,l=function(){
+        var r=(new Date).getTime(),o=t-r,i=Math.floor(o/864e5),a=Math.floor(o%864e5/36e5),s=Math.floor(o%36e5/6e4),l=Math.floor(o%6e4/1e3);
+        c(i,a,s,l),o<0&&(clearInterval(u),n.innerHTML="OUT NOW",e.style.display="none",n.style.display="")};
+      if(t){
+        var u=setInterval(l,1e3);
+        this.gjs_countdown_interval=u,n.style.display="none",e.style.display="",l()}
+      else c(0,0,0,0)
+    }
+     .bind(items[i]))();
+  }
+</script>
