@@ -11,17 +11,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #000000, #434343); /* Dark gradient background */
+    background: linear-gradient(135deg, #000000, #434343);
     overflow: hidden;
-    transition: background 0.5s ease;
 }
 
 .container {
     text-align: center;
-    position: relative;
-    z-index: 2;
     animation: fadeIn 2s ease-out;
-    width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -29,30 +25,16 @@ body {
 h1 {
     font-size: 5vw;
     margin: 0;
-    color: transparent; /* Make text transparent */
-    position: relative;
-    animation: slideIn 1s ease-out;
-    white-space: nowrap;
-    overflow: visible;
-    text-overflow: ellipsis;
-    transition: transform 0.32s ease-out, color 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease; /* Remove background-color from transition */
+    color: #000000;
+    transition: all 0.3s ease;
     cursor: default;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Strong shadow by default */
-    filter: blur(5px); /* Apply blur effect */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-h1:hover {
+h1.hovered {
     transform: scale(1.05);
-    transition: transform 0.32s ease-out, text-shadow 0.32s ease-out, filter 0.32s ease-out, color 0.32s ease-out;
-    text-shadow: none; /* Remove shadow on hover */
-    filter: none; /* Remove blur on hover */
-    color: #000000; /* Change text color to black on hover */
-    background-color: rgba(255, 255, 255, 0.8); /* Add a light background color on hover */
-}
-
-h1:not(:hover) {
-    transition: transform 0.64s ease-out, text-shadow 0.64s ease-out, filter 0.64s ease-out;
-    background-color: transparent; /* Reset background color when not hovered */
+    text-shadow: none;
+    color: #ffffff;
 }
 
 h1 sup {
@@ -65,50 +47,9 @@ h1 sup a {
     color: inherit;
 }
 
-.particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    animation: float 20s infinite linear;
-    top: calc(var(--y) * 100%);
-    left: calc(var(--x) * 100%);
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    100% {
-        transform: translateY(-100vh) rotate(720deg);
-    }
-}
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 @keyframes rainbow {
@@ -120,6 +61,10 @@ h1 sup a {
     70% { background: indigo; }
     84% { background: violet; }
     100% { background: red; }
+}
+
+body.rainbow {
+    animation: rainbow 5s linear infinite;
 }
 
 @media (max-width: 768px) {
