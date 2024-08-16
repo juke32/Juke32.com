@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #f0f0f0, #d0e0ff);
+    background: linear-gradient(135deg, #000000, #434343); /* Dark gradient background */
     overflow: hidden;
     transition: background 0.5s ease;
 }
@@ -29,25 +29,30 @@ body {
 h1 {
     font-size: 5vw;
     margin: 0;
-    color: #000;
+    color: transparent; /* Make text transparent */
     position: relative;
     animation: slideIn 1s ease-out;
     white-space: nowrap;
     overflow: visible;
     text-overflow: ellipsis;
-    transition: transform 0.32s ease-out, color 0.3s ease, text-shadow 0.3s ease;
+    transition: transform 0.32s ease-out, color 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease; /* Remove background-color from transition */
     cursor: default;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Strong shadow by default */
+    filter: blur(5px); /* Apply blur effect */
 }
 
-h1.hovered {
+h1:hover {
     transform: scale(1.05);
-    transition: transform 0.32s ease-out;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.32s ease-out, text-shadow 0.32s ease-out, filter 0.32s ease-out, color 0.32s ease-out;
+    text-shadow: none; /* Remove shadow on hover */
+    filter: none; /* Remove blur on hover */
+    color: #000000; /* Change text color to black on hover */
+    background-color: rgba(255, 255, 255, 0.8); /* Add a light background color on hover */
 }
 
-h1:not(.hovered) {
-    transition: transform 0.64s ease-out, text-shadow 0.64s ease-out;
+h1:not(:hover) {
+    transition: transform 0.64s ease-out, text-shadow 0.64s ease-out, filter 0.64s ease-out;
+    background-color: transparent; /* Reset background color when not hovered */
 }
 
 h1 sup {
