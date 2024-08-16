@@ -14,20 +14,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
                           rgba(255, 255, 255, 0.02) 50%,
                           rgba(0, 0, 0, 0) 75%)`;
 
-        h1.style.webkitBackgroundClip = 'text';
-        h1.style.webkitTextFillColor = 'transparent';
         h1.style.backgroundClip = 'text';
+        h1.style.color = 'transparent';
         h1.style.backgroundImage = gradient;
         
         h1.classList.add('hovered');
     });
 
     h1.addEventListener('mouseleave', () => {
-        h1.style.webkitBackgroundClip = 'initial';
-        h1.style.webkitTextFillColor = 'initial';
         h1.style.backgroundClip = 'initial';
+        h1.style.color = '#000000'; // Ensure text color is set to black
         h1.style.backgroundImage = 'none';
-        h1.style.color = '#000';
         
         h1.classList.remove('hovered');
     });
