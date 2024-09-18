@@ -5,121 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>juke^32</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Standard Favicon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <!-- High-Resolution Icons -->
     <link rel="icon" sizes="32x32" href="assets/images/favicon-32x32.png" type="image/png">
     <link rel="icon" sizes="64x64" href="assets/images/favicon-64x64.png" type="image/png">
-    <style>
-        .corner-link {
-            position: absolute;
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer; /* Ensure the cursor changes to indicate a clickable link */
-            z-index: 1000; /* Ensure the links are on top of other elements */
-            transition: color 0.3s, font-size 0.3s; /* Smooth transition for hover effects */
-        }
-        .corner-link:hover {
-            color: white; /* Change text color to white on hover */
-            font-size: 1.2em; /* Enlarge text on hover */
-        }
-        .top-left {
-            top: 10px;
-            left: 10px;
-        }
-        .top-right {
-            top: 10px;
-            right: 10px;
-        }
-        .bottom-left {
-            bottom: 10px;
-            left: 10px;
-        }
-        .bottom-right {
-            bottom: 10px;
-            right: 10px;
-        }
-        
-        #about-section {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            z-index: 2000;
-            overflow: auto;
-        }
-        
-        #about-section.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .about-content {
-            max-width: 600px;
-            padding: 40px;
-            text-align: center;
-        }
-        
-        .about-content h2 {
-            margin-bottom: 20px;
-        }
-        
-        .about-content p {
-            margin-bottom: 15px;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        #track-name {
-            font-weight: bold;
-            color: #f0f0f0;
-        }
-
-        .track {
-            cursor: pointer;
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #f0f0f0;
-            /* Remove border-radius */
-            transition: background-color 0.3s ease;
-        }
-        
-
-
-    </style>
 </head>
 <body>
     <div id="particles-js"></div>
     <div class="container">
         <h1>&lt;juke<sup><a href="https://trello.com/b/abEXFTkS" id="superscript-link" rel="noopener noreferrer">32</a></sup>&gt; coming soon</h1>
-        <!-- Update this element -->
-        <div id="current-track"> <span id="track-name"></span></div> <!-- used to say now playing: between div and span -->
-        <!-- used to say now playing: -->
+        <div id="current-track"><span id="track-name"></span></div>
     </div>
     
-    <a href="#" rel="noopener noreferrer" class="corner-link top-left">click the 32</a>
-    <a href="#" rel="noopener noreferrer" class="corner-link top-right" id="about-link">about</a>
-    <a href="#" rel="noopener noreferrer" class="corner-link bottom-left" >bottom-left text</a>
-    <a href="#" rel="noopener noreferrer" class="corner-link bottom-right">bottom-right text</a>
+    <a href="#" class="corner-link top-left">click the 32</a>
+    <a href="#" class="corner-link top-right" id="about-link">about</a>
+    <a href="#" class="corner-link bottom-left">bottom-left text</a>
+    <a href="#" class="corner-link bottom-right">bottom-right text</a>
     
     <div id="about-section">
         <span class="close-btn">&times;</span>
         <div class="about-content">
-			<h2>juke32:</h2>
-            <h2>A Minecraft inspired mp3 player</h2>
+            <h2>juke32: A Minecraft inspired mp3 player</h2>
             <p>I am certainly not the first or the last to try to bring a jukebox to life. Feel free to contact me:</p>
-            <!-- <p><strong>Email:</strong> juke32@reborn.com</p> -->
             <p><strong>Discord:</strong> juke32.com</p>
         </div>
     </div>
@@ -127,7 +33,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', () => {
             const aboutLink = document.getElementById('about-link');
             const aboutSection = document.getElementById('about-section');
             const closeBtn = document.querySelector('.close-btn');
@@ -135,83 +41,11 @@
             aboutLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 aboutSection.classList.add('active');
-                console.log('About section activated');
             });
             
             closeBtn.addEventListener('click', () => {
                 aboutSection.classList.remove('active');
-                console.log('About section closed');
             });
-
-            // Add these new functions and variables
-            const currentTrackElement = document.getElementById('current-track');
-            let fadeTimeout;
-
-            function showCurrentTrack(trackPath) {
-                // Clear any existing timeout
-                clearTimeout(fadeTimeout);
-                
-                // Extract just the file name from the path
-                const fileName = trackPath.split('/').pop();
-                
-                // Set the file name and make it visible immediately
-                document.getElementById('track-name').textContent = fileName;
-                currentTrackElement.style.opacity = '1';
-                
-                // Start fading out immediately
-                fadeOutCurrentTrack();
-            }
-
-            function fadeOutCurrentTrack() {
-                // Use requestAnimationFrame for smooth animation
-                requestAnimationFrame(() => {
-                    currentTrackElement.style.opacity = '0';
-                });
-            }
-
-            function playAudio(trackPath) {
-                // Your existing audio play logic here
-                // ...
-
-                // Show the current track and start fading immediately
-                showCurrentTrack(trackPath);
-            }
-
-            // Konami Code sequence
-            const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-            let konamiIndex = 0;
-
-            // Add event listener for keydown
-            document.addEventListener('keydown', function(e) {
-                // Check if the key pressed matches the next key in the Konami Code
-                if (e.key === konamiCode[konamiIndex]) {
-                    konamiIndex++;
-                    
-                    // If the full Konami Code has been entered
-                    if (konamiIndex === konamiCode.length) {
-                        activateRainbowMode();
-                        konamiIndex = 0; // Reset the index
-                    }
-                } else {
-                    konamiIndex = 0; // Reset if wrong key is pressed
-                }
-            });
-
-            function activateRainbowMode() {
-                console.log('Rainbow mode activated!'); // For debugging
-                
-                // Play Wilhelm scream
-                const wilhelmScream = new Audio('assets/sound/Wilhelm.wav');
-                wilhelmScream.play();
-                
-                // Add rainbow class to body
-                document.body.classList.add('rainbow');
-                
-                // Remove rainbow class after 5 seconds
-                setTimeout(() => {
-                    document.body.classList.remove('rainbow');
-                }, 5000);
-            }
         });
     </script>
 </body>
