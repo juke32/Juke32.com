@@ -13,14 +13,13 @@ body {
     height: 100vh;
     background: linear-gradient(135deg, #000000, #434343);
     overflow: hidden;
-    user-select: none; /* Disable text selection */
+    user-select: none;
 }
 
 .container {
     text-align: center;
     animation: fadeIn 2s ease-out;
     padding: 0 20px;
-    box-sizing: border-box;
     position: relative;
     z-index: 2;
 }
@@ -28,8 +27,6 @@ body {
 h1 {
     font-size: 5vw;
     margin: 0;
-    color: #000000;
-    transition: all 0.3s ease;
     cursor: default;
     background: linear-gradient(90deg, #000000 0%, #000000 35%, #bbbbbb 45%, #bbbbbb 55%, #000000 65%, #000000 100%);
     background-size: 200% auto;
@@ -37,7 +34,7 @@ h1 {
     -webkit-background-clip: text;
     background-clip: text;
     animation: shimmer 10s linear infinite;
-    transition: filter 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    transition: filter 0.3s ease, transform 0.3s ease;
     filter: blur(3px);
     transform: scale(1);
 }
@@ -64,12 +61,8 @@ h1 sup a {
 }
 
 @keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
 }
 
 @keyframes rainbow {
@@ -82,25 +75,17 @@ h1 sup a {
     84% { background: violet; }
     100% { background: red; }
 }
-.rainbow {
-    animation: rainbow-bg 32s linear;
-    animation-iteration-count: 1; /* Changed to 1 to match the 32-second duration */
-}
 
-body.rainbow {
+.rainbow {
     animation: rainbow 10s linear infinite;
 }
 
 @media (max-width: 768px) {
-    h1 {
-        font-size: 7vw;
-    }
+    h1 { font-size: 7vw; }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 9vw;
-    }
+    h1 { font-size: 9vw; }
 }
 
 #particles-js {
@@ -112,41 +97,142 @@ body.rainbow {
     z-index: 1;
 }
 
-h1:not(:hover) {
-    filter: blur(3.2px);
-}
-
-h1:hover {
-    filter: blur(0);
-}
-
-/* 9/17/2024 about section stuff */
-
-.rainbow {
-    animation: rainbow-bg 5s linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes rainbow-bg {
-    0%, 100% { background-color: red; }
-    14.28% { background-color: orange; }
-    28.57% { background-color: yellow; }
-    42.85% { background-color: green; }
-    57.14% { background-color: blue; }
-    71.42% { background-color: indigo; }
-    85.71% { background-color: violet; }
-}
-
 #current-track {
     position: fixed;
-    bottom: 10px;
+    bottom: 2vw;
     left: 50%;
     transform: translateX(-50%);
-    color: #fff; /* White text color */
-    padding: 5px 10px;
-    font-size: 0.9em;
+    color: #fff;
+    padding: 0.5vw 1vw;
+    font-size: 1.5vw;
+    max-font-size: 16px;
     opacity: 0;
     transition: opacity 0.32s ease-in, opacity 1.2s ease-out;
     pointer-events: none;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow for better visibility */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80vw;
+}
+
+@media (max-width: 768px) {
+    #current-track {
+        font-size: 2vw;
+        max-font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    #current-track {
+        font-size: 2.5vw;
+        max-font-size: 12px;
+        bottom: 3vw;
+    }
+}
+
+.corner-link {
+    position: absolute;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    z-index: 1000;
+    transition: color 0.3s, font-size 0.3s;
+    font-size: 1.5vw; /* Base size scaled to viewport width */
+    max-font-size: 14px; /* Maximum font size */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.corner-link:hover {
+    color: white;
+    font-size: 1.7vw; /* Slightly larger on hover */
+    max-font-size: 16px;
+}
+
+.top-left { top: 1vw; left: 1vw; }
+.top-right { top: 1vw; right: 1vw; }
+.bottom-left { bottom: 1vw; left: 1vw; }
+.bottom-right { bottom: 1vw; right: 1vw; }
+
+@media (max-width: 768px) {
+    .corner-link {
+        font-size: 2vw;
+        max-width: 45%;
+    }
+
+    .corner-link:hover {
+        font-size: 2.2vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .corner-link {
+        font-size: 2.5vw;
+        max-width: 40%;
+    }
+
+    .corner-link:hover {
+        font-size: 2.7vw;
+    }
+
+    .top-left, .top-right {
+        top: 2vw;
+    }
+
+    .bottom-left, .bottom-right {
+        bottom: 2vw;
+    }
+
+    .top-left, .bottom-left {
+        left: 2vw;
+    }
+
+    .top-right, .bottom-right {
+        right: 2vw;
+    }
+}
+
+#about-section {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 2000;
+    overflow: auto;
+}
+
+#about-section.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-content {
+    max-width: 600px;
+    padding: 40px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: none;
+    border: none;
+    color: white;
+    padding: 0;
+    font-family: 'Minecraftia', sans-serif;
+}
+
+.close-btn:hover {
+    transform: scale(1.5);
 }
