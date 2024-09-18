@@ -11,19 +11,76 @@ document.addEventListener('DOMContentLoaded', (event) => {
         slowDownParticles();
     });
 
-    // Easter egg: Konami code
+    // Konami Code sequence
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
 
-    document.addEventListener('keydown', (e) => {
+    // Add event listener for keydown
+    document.addEventListener('keydown', function(e) {
+        // Check if the key pressed matches the next key in the Konami Code
         if (e.key === konamiCode[konamiIndex]) {
             konamiIndex++;
+            
+            // If the full Konami Code has been entered
             if (konamiIndex === konamiCode.length) {
-                activateEasterEgg();
-                konamiIndex = 0;
+                activateRainbowMode();
+                konamiIndex = 0; // Reset the index
             }
         } else {
-            konamiIndex = 0;
+            konamiIndex = 0; // Reset if wrong key is pressed
+        }
+    });
+
+    function activateRainbowMode() {
+        console.log('Rainbow mode activated!'); // For debugging
+        
+        // Play Wilhelm scream
+        const wilhelmScream = new Audio('assets/sound/Wilhelm.wav');
+        wilhelmScream.play();
+        
+        // Add rainbow class to body
+        document.body.classList.add('rainbow');
+        
+        // Remove rainbow class after 32 seconds
+        setTimeout(() => {
+            document.body.classList.remove('rainbow');
+        }, 32000); // 32 seconds in milliseconds
+    }
+
+    // New feature: Play sound on specific key presses
+    document.addEventListener('keydown', (e) => {
+        let soundFile = '';
+
+        switch (e.key) {
+            case 'ArrowUp':
+                soundFile = 'assets/sound/up.wav'; // Update the path as necessary
+                break;
+            case 'ArrowDown':
+                soundFile = 'assets/sound/down.wav'; // Update the path as necessary
+                break;
+            case 'ArrowLeft':
+                soundFile = 'assets/sound/left.wav'; // Update the path as necessary
+                break;
+            case 'ArrowRight':
+                soundFile = 'assets/sound/right.wav'; // Update the path as necessary
+                break;
+            case 'a':
+                soundFile = 'assets/sound/a.wav'; // Update the path as necessary
+                break;
+            case 'b':
+                soundFile = 'assets/sound/b.wav'; // Update the path as necessary
+                break;
+        }
+
+        // Play the sound if a valid key was pressed
+        if (soundFile) {
+            const sound = new Audio(soundFile);
+            sound.play();
+            showCurrentTrack(soundFile);
+            
+            sound.onended = function() {
+                updateCurrentTrack(audio.paused ? null : 'PrettyDecent - Juke.mp3');
+            };
         }
     });
 
@@ -40,9 +97,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "shape": {
                 "type": "image",
                 "image": {
-                    "src": "favicon-64x64.png",
-                    "width": 100,
-                    "height": 100
+                    "src": "assets/images/favicon-64x64.png",
+                    "width": 64,
+                    "height": 64
                 }
             },
             "size": {
@@ -75,7 +132,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         "interactivity": {
             "events": {
                 "onclick": {
-                    "enable": false,  // Prevent default spawning of particles on click
+                    "enable": true,  // Prevent default spawning of particles on click
                 }
             },
             "modes": {
@@ -93,8 +150,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const pJS = window.pJSDom[0].pJS;
         pJS.particles.move.speed = 10;  // Increase speed when hovering
         pJS.particles.array.forEach(particle => {
-            particle.vx *= 5;
-            particle.vy *= 5;
+            particle.vx *= 6;
+            particle.vy *= 6;
         });
     }
 
@@ -102,43 +159,118 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const pJS = window.pJSDom[0].pJS;
         pJS.particles.move.speed = 2;  // Return to original speed
         pJS.particles.array.forEach(particle => {
-            particle.vx /= 5;
-            particle.vy /= 5;
+            particle.vx /= 6;
+            particle.vy /= 6;
         });
     }
 
-    window.addImageOnClick = function(event) {
-        const pJS = window.pJSDom[0].pJS;
-        const container = document.getElementById('particles-js');
-        const rect = container.getBoundingClientRect();
+    var mainText = document.querySelector('h1');
+    var audio = new Audio('assets/sound/PrettyDecent - Juke.mp3');
+    audio.loop = true;
 
-        // Calculate the position relative to the container
-        const pos = {
-            x: event.clientX - rect.left,
-            y: event.clientY - rect.top
-        };
+    mainText.addEventListener('mouseenter', function() {
+        audio.play();
+        updateCurrentTrack('PrettyDecent - Juke.mp3');
+    });
 
-        // Log the position to the console for debugging (optional)
-        console.log('Spawn Position:', pos.x, pos.y);
+    mainText.addEventListener('mouseleave', function() {
+        audio.pause();
+        updateCurrentTrack(null);
+    });
 
-        const newParticle = new pJS.fn.particle(
-            pJS.particles.color,
-            pJS.particles.opacity.value,
-            {
-                'x': pos.x,
-                'y': pos.y
-            }
-        );
+    // New feature: Play random WAV file on click
+    const wavFiles = [
+        'assets/note/banjo.wav',
+        'assets/note/bass.wav',
+        'assets/note/bassattack.wav',
+		'assets/note/bd.wav',
+		'assets/note/bell.wav',
+		'assets/note/bit.wav',
+		'assets/note/cow_bell.wav',
+		'assets/note/didgeridoo.wav',
+		'assets/note/flute.wav',
+		'assets/note/guitar.wav',
+		'assets/note/harp.wav',
+		'assets/note/harp2.wav',
+		'assets/note/hat.wav',
+		'assets/note/icechime.wav',
+		'assets/note/iron_xylophone.wav',
+		'assets/note/pling.wav',
+		'assets/note/snare.wav',
+		'assets/note/xylobone.wav',
+		
+        // Add more WAV files as needed
+    ];
 
-        pJS.particles.array.push(newParticle);
+    document.addEventListener('click', function(event) {
+        // Check if the clicked element is not a button, link, or other interactive element
+        if (!event.target.closest('button, a, input, select, textarea')) {
+            const randomWav = wavFiles[Math.floor(Math.random() * wavFiles.length)];
+            const clickSound = new Audio(randomWav);
+            clickSound.play();
+            showCurrentTrack(randomWav);
+        }
+    });
+
+    function updateCurrentTrack(trackName) {
+        const trackElement = document.getElementById('current-track');
+        const trackNameElement = document.getElementById('track-name');
+        
+        if (trackName) {
+            trackNameElement.textContent = trackName;
+            trackElement.style.opacity = '1';
+            
+            // Clear any existing timeout
+            clearTimeout(trackDisplayTimeout);
+            
+            // Set a new timeout to fade out the track name after 3 seconds
+            trackDisplayTimeout = setTimeout(() => {
+                trackElement.style.opacity = '0';
+            }, 3000);
+        } else {
+            trackElement.style.opacity = '0';
+        }
     }
 
-    document.getElementById('particles-js').addEventListener('click', addImageOnClick);
+    // 9/17/2024 edits past this point
+    // working on the about 
 
-    function activateEasterEgg() {
-        document.body.classList.add('rainbow');
-        setTimeout(() => {
-            document.body.classList.remove('rainbow');
-        }, 5000);
-    }
+
+//this is needed	
 });
+
+const currentTrackElement = document.getElementById('current-track');
+let fadeTimeout;
+
+function showCurrentTrack(trackPath) {
+    // Extract just the file name from the path
+    const fileName = trackPath.split('/').pop();
+    
+    // Clear any existing timeout
+    clearTimeout(fadeTimeout);
+    
+    // Set the file name
+    document.getElementById('track-name').textContent = fileName;
+    
+    // Fade in
+    currentTrackElement.style.transition = 'opacity 0.32s ease-in';
+    currentTrackElement.style.opacity = '1';
+    
+    // Wait 2 seconds, then start fade out
+    fadeTimeout = setTimeout(() => {
+        fadeOutCurrentTrack();
+    }, 3200); // 2 seconds
+}
+
+function fadeOutCurrentTrack() {
+    // Set transition for fade out
+    currentTrackElement.style.transition = 'opacity 1.2s ease-out';
+    currentTrackElement.style.opacity = '0';
+}
+
+function playAudio(trackPath) {
+    // Your existing audio play logic here
+    // ...
+
+    showCurrentTrack(trackPath);
+}

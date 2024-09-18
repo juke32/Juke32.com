@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Minecraftia';
-    src: url('fonts/Minecraftia-Regular.ttf') format('truetype');
+    src: url('assets/fonts/Minecraft.otf') format('truetype');
 }
 
 body {
@@ -13,6 +13,7 @@ body {
     height: 100vh;
     background: linear-gradient(135deg, #000000, #434343);
     overflow: hidden;
+    user-select: none; /* Disable text selection */
 }
 
 .container {
@@ -81,9 +82,13 @@ h1 sup a {
     84% { background: violet; }
     100% { background: red; }
 }
+.rainbow {
+    animation: rainbow-bg 32s linear;
+    animation-iteration-count: 1; /* Changed to 1 to match the 32-second duration */
+}
 
 body.rainbow {
-    animation: rainbow 5s linear infinite;
+    animation: rainbow 10s linear infinite;
 }
 
 @media (max-width: 768px) {
@@ -108,9 +113,40 @@ body.rainbow {
 }
 
 h1:not(:hover) {
-    filter: blur(3px);
+    filter: blur(3.2px);
 }
 
 h1:hover {
     filter: blur(0);
+}
+
+/* 9/17/2024 about section stuff */
+
+.rainbow {
+    animation: rainbow-bg 5s linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rainbow-bg {
+    0%, 100% { background-color: red; }
+    14.28% { background-color: orange; }
+    28.57% { background-color: yellow; }
+    42.85% { background-color: green; }
+    57.14% { background-color: blue; }
+    71.42% { background-color: indigo; }
+    85.71% { background-color: violet; }
+}
+
+#current-track {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff; /* White text color */
+    padding: 5px 10px;
+    font-size: 0.9em;
+    opacity: 0;
+    transition: opacity 0.32s ease-in, opacity 1.2s ease-out;
+    pointer-events: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow for better visibility */
 }
