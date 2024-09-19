@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     h1.addEventListener('mouseenter', () => {
         h1.classList.add('hovered');
-        toggleParticles(12); // Increase speed to 12
+        toggleParticles(10); // Increase speed to 10
         audio.play();
         updateCurrentTrack('PrettyDecent - Juke.mp3');
     });
@@ -65,8 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (soundFile) {
                 const keySound = new Audio(`assets/sound/${soundFile}`);
                 keySound.play();
-                // Display the name of the key sound
-                updateCurrentTrack(e.key.replace('Arrow', ''));
             }
 
             konamiIndex++;
@@ -82,11 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function activateRainbowMode() {
         new Audio('assets/sound/Wilhelm.wav').play();
         document.body.classList.add('rainbow');
-        updateCurrentTrack('Wilhelm Scream');
-        setTimeout(() => {
-            document.body.classList.remove('rainbow');
-            updateCurrentTrack(null);
-        }, 32000);
+        setTimeout(() => document.body.classList.remove('rainbow'), 32000);
     }
 
     const wavFiles = [
@@ -110,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         clearTimeout(trackDisplayTimeout);
         if (trackName) {
-            trackNameElement.textContent = trackName;
+            trackNameElement.textContent = trackName.replace(/\.(wav|mp3)$/, '');
             trackElement.style.opacity = '1';
             trackDisplayTimeout = setTimeout(() => trackElement.style.opacity = '0', 3000);
         } else {
