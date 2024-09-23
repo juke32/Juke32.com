@@ -5,14 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const particlesConfig = {
         particles: {
-            number: { value: 10 },
+            number: { value: 5 },  // Reduced from 10 to 5
             shape: {
                 type: "image",
                 image: { src: "assets/images/favicon-64x64.png", width: 64, height: 64 }
             },
             size: { value: 20, random: true, anim: { enable: true, speed: 2, size_min: 10, sync: false } },
             move: { enable: true, speed: 2, direction: "bottom-right", out_mode: "out" },
-            line_linked: { enable: true, distance: 200, color: "#b2b2b2", opacity: 0.4, width: 1 },
+            line_linked: { enable: true, distance: 320, color: "#b2b2b2", opacity: 0.4, width: 1 },  // Increased distance from 200 to 300
         },
         interactivity: { events: { onclick: { enable: true } }, modes: { push: { particles_nb: 1 } } },
         retina_detect: true
@@ -114,13 +114,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showCurrentTrack(trackPath) {
         const fileName = trackPath.split('/').pop().replace(/\.(wav|mp3)$/, '');
-        document.getElementById('track-name').textContent = fileName;
         const currentTrackElement = document.getElementById('current-track');
+        const trackNameElement = document.getElementById('track-name');
+
+        // Clear any existing timeouts
+        clearTimeout(currentTrackElement.fadeOutTimeout);
+
+        // Update the track name
+        trackNameElement.textContent = fileName;
+
+        // Set initial styles
         currentTrackElement.style.transition = 'opacity 0.32s ease-in';
         currentTrackElement.style.opacity = '1';
-        setTimeout(() => {
+
+        // Set a timeout for fade-out
+        currentTrackElement.fadeOutTimeout = setTimeout(() => {
             currentTrackElement.style.transition = 'opacity 1.2s ease-out';
             currentTrackElement.style.opacity = '0';
-        }, 3200);
+        }, 3200); // Increased from 3200 to 5000 milliseconds (5 seconds)
     }
 });
