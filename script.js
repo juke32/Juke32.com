@@ -5,14 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const particlesConfig = {
         particles: {
-            number: { value: 5 },  // Reduced from 10 to 5
+            number: { value: 4 },  // Reduced from 10 to 5
             shape: {
                 type: "image",
                 image: { src: "assets/images/favicon-64x64.png", width: 64, height: 64 }
             },
             size: { value: 20, random: true, anim: { enable: true, speed: 2, size_min: 10, sync: false } },
             move: { enable: true, speed: 2, direction: "bottom-right", out_mode: "out" },
-            line_linked: { enable: true, distance: 320, color: "#b2b2b2", opacity: 0.4, width: 1 },  // Increased distance from 200 to 300
+            line_linked: { enable: true, distance: 400, color: "#b2b2b2", opacity: 0.4, width: 1 },  // Increased distance from 200 to 300
         },
         interactivity: { events: { onclick: { enable: true } }, modes: { push: { particles_nb: 1 } } },
         retina_detect: true
