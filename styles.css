@@ -99,13 +99,12 @@ h1 sup a {
 
 #current-track {
     position: fixed;
-    bottom: 2vw;
+    bottom: 2vh; /* Keep it at the bottom for landscape and wider screens */
     left: 50%;
     transform: translateX(-50%);
     color: #fff;
     padding: 0.5vw 1vw;
     font-size: 1.5vw;
-    max-font-size: 16px;
     opacity: 0;
     transition: opacity 0.32s ease-in, opacity 1.2s ease-out;
     pointer-events: none;
@@ -114,20 +113,25 @@ h1 sup a {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 80vw;
+    z-index: 1001;
 }
 
 @media (max-width: 768px) {
     #current-track {
-        font-size: 2vw;
-        max-font-size: 14px;
+        font-size: 2.5vw;
     }
 }
 
 @media (max-width: 480px) {
     #current-track {
-        font-size: 2.5vw;
-        max-font-size: 12px;
-        bottom: 3vw;
+        font-size: 3.5vw;
+    }
+}
+
+/* Move the track display higher when the screen is taller than it is wide */
+@media (orientation: portrait) {
+    #current-track {
+        bottom: 20vh; /* Move it higher in portrait mode */
     }
 }
 
@@ -138,17 +142,18 @@ h1 sup a {
     cursor: pointer;
     z-index: 1000;
     transition: color 0.3s, font-size 0.3s;
-    font-size: 1.5vw; /* Base size scaled to viewport width */
-    max-font-size: 14px; /* Maximum font size */
+    font-size: 2vw; /* Base size for larger screens */
+    max-font-size: 18px; /* Maximum font size for larger screens */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 40%; /* Limit width to prevent overlap */
 }
 
 .corner-link:hover {
     color: white;
-    font-size: 1.7vw; /* Slightly larger on hover */
-    max-font-size: 16px;
+    font-size: 2.2vw; /* Slightly larger on hover */
+    max-font-size: 20px;
 }
 
 .top-left { top: 1vw; left: 1vw; }
@@ -158,23 +163,25 @@ h1 sup a {
 
 @media (max-width: 768px) {
     .corner-link {
-        font-size: 2vw;
+        font-size: 3.5vw;
+        max-font-size: 24px;
         max-width: 45%;
     }
 
     .corner-link:hover {
-        font-size: 2.2vw;
+        font-size: 3.7vw;
+        max-font-size: 25px;
     }
 }
 
 @media (max-width: 480px) {
     .corner-link {
-        font-size: 2.5vw;
+        font-size: 6vw;
         max-width: 40%;
     }
 
     .corner-link:hover {
-        font-size: 2.7vw;
+        font-size: 3.2vw;
     }
 
     .top-left, .top-right {
@@ -204,35 +211,45 @@ h1 sup a {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     z-index: 2000;
-    overflow: auto;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 #about-section.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block; /* Changed from flex to block */
 }
 
 .about-content {
     max-width: 600px;
-    padding: 40px;
+    padding: 60px 20px 40px; /* Increased top padding for mobile */
+    margin: 0 auto; /* Center the content */
     text-align: center;
 }
 
 .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed; /* Changed from absolute to fixed */
+    top: 10px;
+    right: 10px;
     font-size: 24px;
     cursor: pointer;
     transition: transform 0.3s ease;
     background: none;
     border: none;
     color: white;
-    padding: 0;
+    padding: 10px; /* Increased padding for better touch target */
     font-family: 'Minecraftia', sans-serif;
+    z-index: 2001; /* Ensure it's above the content */
 }
 
 .close-btn:hover {
     transform: scale(1.5);
+}
+
+@media (max-width: 480px) {
+    .about-content {
+        padding-top: 80px; /* Further increase top padding for smaller screens */
+    }
+
+    .close-btn {
+        font-size: 28px; /* Slightly larger for mobile */
+    }
 }
