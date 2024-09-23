@@ -83,17 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => document.body.classList.remove('rainbow'), 32000);
     }
 
-    const wavFiles = [
-        'banjo', 'bass', 'bassattack', 'bd', 'bell', 'bit', 'cow_bell', 'didgeridoo',
-        'flute', 'guitar', 'harp', 'harp2', 'hat', 'icechime', 'iron_xylophone',
-        'pling', 'snare', 'xylobone'
-    ].map(file => `assets/note/${file}.wav`);
+    const mp3Files = [
+        'banjo', 'bass', 'bassb', 'bongo', 'bowl', 'bugle', 'chair', 'glass', 'guitar', 'hat',
+        'hit', 'kalimba', 'melodian', 'piano', 'pluckp', 'recorder', 'steeldrum',
+        'steelguitar', 'vibraphone', 'violin'
+    ].map(file => `assets/note/${file}.mp3`);
 
     document.addEventListener('click', (event) => {
         if (!event.target.closest('button, a, input, select, textarea')) {
-            const randomWav = wavFiles[Math.floor(Math.random() * wavFiles.length)];
-            new Audio(randomWav).play();
-            showCurrentTrack(randomWav);
+            const randomMp3 = mp3Files[Math.floor(Math.random() * mp3Files.length)];
+            new Audio(randomMp3).play();
+            showCurrentTrack(randomMp3);
         }
     });
 
