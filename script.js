@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mp3Files = [
         'banjo', 'bass', 'bassb', 'bongo', 'bowl', 'bugle', 'chair', 'glass', 'guitar', 'hat',
         'hit', 'kalimba', 'melodian', 'piano', 'pluckp', 'recorder', 'steeldrum',
-        'steelguitar', 'vibraphone', 'violin'
+        'steelguitar', 'vibraphone', 'violin', 'cat'
     ].map(file => `assets/note/${file}.mp3`);
 
     document.addEventListener('click', (event) => {
