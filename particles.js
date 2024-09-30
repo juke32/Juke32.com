@@ -642,6 +642,11 @@ var pJS = function(tag_id, params){
     /* update each particles param */
     pJS.fn.particlesUpdate();
 
+    /* Reset connections for each particle */
+    for (var i = 0; i < pJS.particles.array.length; i++) {
+        pJS.particles.array[i].connections = []; // Reset connections
+    }
+
     /* draw each particle */
     for(var i = 0; i < pJS.particles.array.length; i++){
       var p = pJS.particles.array[i];
@@ -682,25 +687,31 @@ var pJS = function(tag_id, params){
     /* draw a line between p1 and p2 if the distance between them is under the config distance */
     if(dist <= pJS.particles.line_linked.distance){
 
-      var opacity_line = pJS.particles.line_linked.opacity - (dist / (1/pJS.particles.line_linked.opacity)) / pJS.particles.line_linked.distance;
+        // Initialize connection count for p1 if it doesn't exist
+        if (!p1.connections) {
+            p1.connections = [];
+        }
 
-      if(opacity_line > 0){        
-        
-        /* style */
-        var color_line = pJS.particles.line_linked.color_rgb_line;
-        pJS.canvas.ctx.strokeStyle = 'rgba('+color_line.r+','+color_line.g+','+color_line.b+','+opacity_line+')';
-        pJS.canvas.ctx.lineWidth = pJS.particles.line_linked.width;
-        //pJS.canvas.ctx.lineCap = 'round'; /* performance issue */
-        
-        /* path */
-        pJS.canvas.ctx.beginPath();
-        pJS.canvas.ctx.moveTo(p1.x, p1.y);
-        pJS.canvas.ctx.lineTo(p2.x, p2.y);
-        pJS.canvas.ctx.stroke();
-        pJS.canvas.ctx.closePath();
+        // Only draw line if connection count is less than 5
+        if (p1.connections.length < 5 && !p1.connections.includes(p2)) {
+            p1.connections.push(p2); // Track connection
 
-      }
+            var opacity_line = pJS.particles.line_linked.opacity - (dist / (1/pJS.particles.line_linked.opacity)) / pJS.particles.line_linked.distance;
 
+            if(opacity_line > 0){        
+                /* style */
+                var color_line = pJS.particles.line_linked.color_rgb_line;
+                pJS.canvas.ctx.strokeStyle = 'rgba('+color_line.r+','+color_line.g+','+color_line.b+','+opacity_line+')';
+                pJS.canvas.ctx.lineWidth = pJS.particles.line_linked.width;
+                
+                /* path */
+                pJS.canvas.ctx.beginPath();
+                pJS.canvas.ctx.moveTo(p1.x, p1.y);
+                pJS.canvas.ctx.lineTo(p2.x, p2.y);
+                pJS.canvas.ctx.stroke();
+                pJS.canvas.ctx.closePath();
+            }
+        }
     }
 
   };
