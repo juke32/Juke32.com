@@ -5,14 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const particlesConfig = {
         particles: {
-            number: { value: 4 },  // Reduced from 10 to 5
+            number: { value: 2 },  // Reduced from 4 to 2 for better performance
             shape: {
                 type: "image",
                 image: { src: "assets/images/favicon-64x64.png", width: 64, height: 64 }
             },
             size: { value: 20, random: true, anim: { enable: true, speed: 2, size_min: 10, sync: false } },
             move: { enable: true, speed: 2, direction: "bottom-right", out_mode: "out" },
-            line_linked: { enable: true, distance: 400, color: "#b2b2b2", opacity: 0.4, width: 1 },  // Increased distance from 200 to 300
+            line_linked: { enable: true, distance: 300, color: "#b2b2b2", opacity: 0.4, width: 1 },
         },
         interactivity: { events: { onclick: { enable: true } }, modes: { push: { particles_nb: 1 } } },
         retina_detect: true
@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     h1.addEventListener('mouseenter', () => {
         h1.classList.add('hovered');
-        toggleParticles(10); // Increase speed to 10
+        toggleParticles(10);
         audio.play();
         updateCurrentTrack('PrettyDecent - Juke.mp3');
     });
 
     h1.addEventListener('mouseleave', () => {
         h1.classList.remove('hovered');
-        toggleParticles(2); // Decrease speed to 2
+        toggleParticles(2);
         audio.pause();
         updateCurrentTrack(null);
     });
@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === konamiCode[konamiIndex]) {
-            // Play the specific sound for the key
             const soundFile = soundMap[e.key];
             if (soundFile) {
                 const keySound = new Audio(`assets/sound/${soundFile}`);
@@ -89,13 +88,35 @@ document.addEventListener('DOMContentLoaded', () => {
         'steelguitar', 'vibraphone', 'violin', 'cat'
     ].map(file => `assets/note/${file}.mp3`);
 
-    document.addEventListener('click', (event) => {
+    // Throttle function to limit click event frequency
+    function throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function() {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function() {
+                    if ((Date.now() - lastRan) >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
+        };
+    }
+
+    document.addEventListener('click', throttle((event) => {
         if (!event.target.closest('button, a, input, select, textarea')) {
             const randomMp3 = mp3Files[Math.floor(Math.random() * mp3Files.length)];
             new Audio(randomMp3).play();
             showCurrentTrack(randomMp3);
         }
-    });
+    }, 240)); // Throttle clicks to every 300ms
 
     let trackDisplayTimeout;
     function updateCurrentTrack(trackName) {
@@ -117,20 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTrackElement = document.getElementById('current-track');
         const trackNameElement = document.getElementById('track-name');
 
-        // Clear any existing timeouts
         clearTimeout(currentTrackElement.fadeOutTimeout);
-
-        // Update the track name
         trackNameElement.textContent = fileName;
-
-        // Set initial styles
         currentTrackElement.style.transition = 'opacity 0.32s ease-in';
         currentTrackElement.style.opacity = '1';
 
-        // Set a timeout for fade-out
         currentTrackElement.fadeOutTimeout = setTimeout(() => {
             currentTrackElement.style.transition = 'opacity 1.2s ease-out';
             currentTrackElement.style.opacity = '0';
-        }, 3200); // Increased from 3200 to 5000 milliseconds (5 seconds)
+        }, 3200);
     }
 });
