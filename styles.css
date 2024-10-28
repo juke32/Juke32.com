@@ -138,7 +138,7 @@ h1 sup a {
 .corner-link {
     position: absolute;
     text-decoration: none;
-    color: inherit;
+    color: rgba(255, 255, 255, 0.32);
     cursor: pointer;
     z-index: 1000;
     transition: color 0.3s, font-size 0.3s;
@@ -151,8 +151,8 @@ h1 sup a {
 }
 
 .corner-link:hover {
-    color: white;
-    font-size: 2.2vw; /* Slightly larger on hover */
+    color: rgba(255, 255, 255, 1);
+    font-size: 2.2vw;
     max-font-size: 20px;
 }
 

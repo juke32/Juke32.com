@@ -301,12 +301,12 @@ body.rainbow h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 40%;
-    color: white;
+    color: rgba(255, 255, 255, 0.32);
     font-family: 'Minecraftia', sans-serif;
 }
 
 .corner-link:hover {
-    color: white;
+    color: rgba(255, 255, 255, 1);
     font-size: 2.2vw;
     max-font-size: 20px;
 }
@@ -321,6 +321,7 @@ body.rainbow h1 {
         font-size: 3.5vw;
         max-font-size: 24px;
         max-width: 45%;
+        color: rgba(255, 255, 255, 0.32);
     }
 
     .corner-link:hover {
