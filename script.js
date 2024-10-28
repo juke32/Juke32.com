@@ -148,4 +148,161 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTrackElement.style.opacity = '0';
         }, 3200);
     }
+
+    const boxes = document.querySelectorAll('.model-box');
+    const popup = document.getElementById('popup');
+    const popupContent = document.querySelector('.popup-content');
+    const header = document.querySelector('h1');
+    let lastScrollTop = 0;
+
+    // Handle header scroll
+    document.querySelector('.scroll-container').addEventListener('scroll', (e) => {
+        const scrollTop = e.target.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = scrollTop;
+    });
+
+    // Handle popup functionality
+    boxes.forEach(box => {
+        box.addEventListener('click', () => {
+            const text = box.getAttribute('data-text');
+            let mediaItems;
+
+            // Define media items for each model
+            switch (box.querySelector('img').alt) {
+                case 'cornflower?':
+                    mediaItems = [
+                        { type: 'image', src: 'assets/images/models/image.jpg' },
+                        { type: 'image', src: 'assets/images/models/image_2.jpg' },
+                        { type: 'video', src: 'assets/videos/image_demo.mp4' }
+                    ];
+                    break;
+
+                case 'lapis':
+                    mediaItems = [
+                        { type: 'image', src: 'assets/images/models/cornflower.jpg' },
+                        { type: 'image', src: 'assets/images/models/cornflower_internal.jpg' },
+                        { type: 'image', src: 'assets/images/models/corn-pig_stain.jpg'},
+                        { type: 'image', src: 'assets/images/models/lapis_ble.jpg' },
+                        { type: 'image', src: 'assets/images/models/lapis_table.jpg' },
+                        { type: 'video', src: 'assets/videos/lapis_ble_demo.mp4' }
+                    ];
+                    break;
+
+                case 'dirt':
+                    mediaItems = [
+                        { type: 'image', src: 'assets/images/models/dirt_mp3.jpg' },
+                        { type: 'image', src: 'assets/images/models/dirt_meets_steve.jpg' },
+                        { type: 'image', src: 'assets/images/models/dirt_stain.jpg' },
+                        { type: 'image', src: 'assets/images/models/dirt_naked.jpg' }
+                    ];
+                    break;
+
+                case 'chunky juke':
+                    mediaItems = [
+                        { type: 'image', src: 'assets/images/models/minichunkyjuke.jpg' },
+                        { type: 'image', src: 'assets/images/models/tiny juke32.png' },
+                        { type: 'image', src: 'assets/images/models/chunkychunk.jpg' }
+                    ];
+                    break;
+
+                case 'buttoncontrol':
+                    mediaItems = [
+                        { type: 'image', src: 'assets/images/models/buttoncontroljuke.jpg' },
+                        { type: 'image', src: 'assets/images/models/buttoncontrolchunky.jpg' },
+                        { type: 'image', src: 'assets/images/models/buttoncontrolproto.jpg' }
+                    ];
+                    break;
+
+                case 'paper juke':
+                    mediaItems = [
+                        { type: 'image', src: 'assets/images/models/paperjuke.jpg' },
+                        { type: 'image', src: 'assets/images/models/paperjukebox.jpg' },
+                        { type: 'image', src: 'assets/images/models/14px mini jukebox cutout (enlarged).png' }
+                    ];
+                    break;
+
+                case 'first try':
+                    mediaItems = [
+                        { type: 'image', src: 'assets/images/models/ben_chunky.jpg' },
+                        { type: 'image', src: 'assets/images/models/first try.jpg' }
+                    ];
+                    break;
+                
+                default:
+                    mediaItems = [{ type: 'image', src: box.querySelector('img').src }];
+            }
+            
+            popup.innerHTML = `
+                <div class="popup-content">
+                    <span class="close">&times;</span>
+                    <div class="media-container">
+                        ${mediaItems.length > 1 ? '<button class="nav-btn prev">&#10094;</button>' : ''}
+                        <div class="media-display"></div>
+                        ${mediaItems.length > 1 ? '<button class="nav-btn next">&#10095;</button>' : ''}
+                    </div>
+                    <div class="popup-text">${text}</div> <!-- Ensure this is below the media display -->
+                </div>
+            `;
+
+            let currentIndex = 0;
+            const mediaDisplay = popup.querySelector('.media-display');
+            
+            function showMedia(index) {
+                const item = mediaItems[index];
+                if (item.type === 'image') {
+                    mediaDisplay.innerHTML = `<img src="${item.src}" class="popup-image" alt="View">`;
+                } else if (item.type === 'video') {
+                    mediaDisplay.innerHTML = `
+                        <video class="popup-video" controls>
+                            <source src="${item.src}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>`;
+                }
+            }
+
+            // Initial media display
+            showMedia(currentIndex);
+
+            // Only set up navigation if there are multiple items
+            if (mediaItems.length > 1) {
+                const prevBtn = popup.querySelector('.prev');
+                const nextBtn = popup.querySelector('.next');
+
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+                    showMedia(currentIndex);
+                });
+
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex + 1) % mediaItems.length;
+                    showMedia(currentIndex);
+                });
+            }
+
+            // Show popup
+            popup.style.display = 'flex';
+
+            // Close button functionality
+            const closeBtn = popup.querySelector('.close');
+            closeBtn.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        });
+    });
+
+    // Close popup when clicking outside
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
 });
