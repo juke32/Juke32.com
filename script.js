@@ -239,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     mediaItems = [{ type: 'image', src: box.querySelector('img').src }];
             }
             
+            // Preload all media items when popup opens
+            preloadMediaItems(mediaItems);
+
             popup.innerHTML = `
                 <div class="popup-content">
                     <span class="close">&times;</span>
@@ -264,6 +267,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             <source src="${item.src}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>`;
+                }
+
+                // Preload next image if it exists
+                if (mediaItems[index + 1] && mediaItems[index + 1].type === 'image') {
+                    const preloadImage = new Image();
+                    preloadImage.src = mediaItems[index + 1].src;
                 }
             }
 
@@ -305,4 +314,14 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.style.display = 'none';
         }
     });
+
+    // Add preload function for all media items
+    function preloadMediaItems(items) {
+        items.forEach(item => {
+            if (item.type === 'image') {
+                const img = new Image();
+                img.src = item.src;
+            }
+        });
+    }
 });
