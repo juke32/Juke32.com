@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Box Models</title>
+    <link rel="stylesheet" href="models.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <!-- Add these lines right after particles-js div -->
+    <a href="https://trello.com/b/abEXFTkS" class="corner-link top-left">trello</a>
+    <a href="index.html" class="corner-link top-right">home</a>
+    <a href="#" class="corner-link bottom-left">.</a>
+    <a href="#" class="corner-link bottom-right">.</a>
+    
+    <div class="main-container">
+        <h1>click on the boxes</h1>
+        <div class="scroll-container">
+            <div class="model-grid">
+                <!-- Fixed the closing div tags and structure -->
+                <!-- To include a new model, ensure the following steps are taken:
+                1. Add a new <div class="model-box"> element with a unique data-text attribute for the model description.
+                2. Within the model-box, include an <img> element with the src attribute pointing to the model's image.
+                3. In script.js, update the switch statement in the box.addEventListener('click') function to include the new model's alt text and media items.
+                4. Ensure the media items (images or videos) are correctly referenced in the assets directory.
+                -->
+                <div class="model-box" data-text="lapis - a basic bluetooth player">
+                    <div class="image-container">
+                        <img src="assets/images/models/cornflower.jpg" alt="lapis">
+                    </div>
+                </div>
+
+                <div class="model-box" data-text="dirt - a basic mp3 player">
+                    <div class="image-container">
+                        <img src="assets/images/models/dirt_mp3.jpg" alt="dirt">
+                    </div>
+                </div>
+
+                <div class="model-box" data-text="custom 12px jukebox design with enlarged border to make a chunky box">
+                    <div class="image-container">
+                        <img src="assets/images/models/minichunkyjuke.jpg" alt="chunky juke">
+                    </div>
+                </div>
+
+                <div class="model-box" data-text="testing mp3 player with simple button control">
+                    <div class="image-container">
+                        <img src="assets/images/models/buttoncontroljuke.jpg" alt="buttoncontrol">
+                    </div>
+                </div>
+
+                <div class="model-box" data-text="changed the 16px texture to 14px to test looks">
+                    <div class="image-container">
+                        <img src="assets/images/models/paperjuke.jpg" alt="paper juke">
+                    </div>
+                </div>  <!-- Added closing div -->
+
+                <div class="model-box" data-text="first trial - first 2 boxes created">
+                    <div class="image-container">
+                        <img src="assets/images/models/ben_chunky.jpg" alt="first try">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <p id="popup-text"></p>
+        </div>
+    </div>
+    <audio id="audio" src="assets/sound/PrettyDecent - Juke.mp3" loop></audio>
+</body>
+</html>
