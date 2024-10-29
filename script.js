@@ -441,4 +441,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    const toggleFontButton = document.getElementById('toggle-font');
+    let isGalacticFontActive = false;
+
+    // Make the toggle button always show in the opposite font of the current page
+    toggleFontButton.classList.add('opposite-font');
+
+    toggleFontButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        isGalacticFontActive = !isGalacticFontActive;  // Toggle the state
+
+        if (isGalacticFontActive) {
+            // Switch main text to Galactic
+            document.documentElement.style.setProperty('--current-font', 'GalacticAlphabet, sans-serif');
+            // Switch button text to Minecraftia (the opposite)
+            document.documentElement.style.setProperty('--opposite-font', 'Minecraftia, sans-serif');
+            toggleFontButton.textContent = 'sga';  // Show 'sga' in Minecraftia font
+        } else {
+            // Switch main text back to Minecraftia
+            document.documentElement.style.setProperty('--current-font', 'Minecraftia, sans-serif');
+            // Switch button text to Galactic (the opposite)
+            document.documentElement.style.setProperty('--opposite-font', 'GalacticAlphabet, sans-serif');
+            toggleFontButton.textContent = 'sga';  // Show 'sga' in Galactic font
+        }
+    });
 });

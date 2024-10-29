@@ -1,26 +1,41 @@
+/* Font definitions for the site */
 @font-face {
     font-family: 'Minecraftia';
     src: url('assets/fonts/Minecraft.otf') format('truetype');
 }
 
+@font-face {
+    font-family: 'GalacticAlphabet';
+    src: url('assets/fonts/minecraft-sga.ttf') format('truetype');
+}
+
+/* CSS variables for font switching functionality */
+:root {
+    --current-font: 'Minecraftia', sans-serif;     /* Default font for most text */
+    --opposite-font: 'GalacticAlphabet', sans-serif;  /* Font used for the toggle button */
+}
+
+/* Base body styles */
 body {
     margin: 0;
     padding: 0;
     background-color: #1a1a1a;
     color: #ffffff;
-    font-family: 'Minecraftia', sans-serif;
+    font-family: var(--current-font);
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden;  /* Prevent body scrolling, let main-container handle it */
     transition: background-color 0.3s ease;
 }
 
+/* Particle.js container */
 #particles-js {
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -1;  /* Place particles behind all content */
 }
 
+/* Main container - handles scrolling for the entire page */
 .main-container {
     position: relative;
     width: 100%;
@@ -28,8 +43,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;    /* Enable vertical scrolling */
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
 }
 
+/* Fixed header styles */
 h1 {
     position: fixed;
     top: 0;
@@ -38,23 +56,22 @@ h1 {
     text-align: center;
     font-size: 5vw;
     color: white;
-    font-family: 'Minecraftia', sans-serif;
+    font-family: var(--current-font);
     margin: 0;
-    padding: 20px 0;
+    padding: 20px;
     background-color: #1a1a1a;
-    z-index: 999;  /* Changed from 1001 to 999 */
+    z-index: 999;  /* Keep header above other content */
     user-select: none;
     transform: none !important;
 }
 
+/* Content container - centers content and provides max-width */
 .scroll-container {
     width: 100%;
     max-width: 1200px;
-    height: calc(100vh - 80px);
-    overflow-y: auto;
-    overflow-x: hidden;
     padding: 20px;
-    margin-top: 80px;
+    padding-right: 20px;  /* Space for scrollbar */
+    margin-top: 80px;    /* Space for fixed header */
 }
 
 .model-grid {
@@ -117,6 +134,7 @@ h1 {
     align-items: center;
     gap: 20px; /* Space between elements */
     overflow-y: auto;
+    padding-right: 12px; /* Add space for scrollbar */
 }
 
 .popup-image {
@@ -128,7 +146,7 @@ h1 {
 .popup-text {
     color: #ffffff;
     text-align: center;
-    font-family: 'Minecraftia', sans-serif;
+    font-family: var(--current-font);
     padding: 20px;
     width: 100%;
     max-width: 800px;
@@ -143,7 +161,7 @@ h1 {
     font-size: 24px;
     cursor: pointer;
     color: #fff;
-    font-family: 'Minecraftia', sans-serif;
+    font-family: var(--current-font);
     padding: 10px;
     z-index: 1001;
     transition: transform 0.3s ease;
@@ -154,23 +172,23 @@ h1 {
     color: #ff0000;
 }
 
-/* Minecraft-style scrollbar */
-.scroll-container::-webkit-scrollbar {
-    width: 12px;
+/* Minecraft-style scrollbar for main container*/
+.main-container::-webkit-scrollbar {
+    width: 12px;                    /* Width of scrollbar */
 }
 
-.scroll-container::-webkit-scrollbar-track {
-    background: #383838;
-    border: 2px solid #1a1a1a;
+.main-container::-webkit-scrollbar-track {
+    background: #383838;            /* Track color */
+    border: 2px solid #1a1a1a;      /* Track border */
 }
 
-.scroll-container::-webkit-scrollbar-thumb {
-    background: #686868;
-    border: 2px solid #1a1a1a;
+.main-container::-webkit-scrollbar-thumb {
+    background: #686868;            /* Scrollbar thumb color */
+    border: 2px solid #1a1a1a;      /* Thumb border */
 }
 
-.scroll-container::-webkit-scrollbar-thumb:hover {
-    background: #787878;
+.main-container::-webkit-scrollbar-thumb:hover {
+    background: #787878;            /* Thumb hover color */
 }
 
 @media (max-width: 768px) {
@@ -304,7 +322,7 @@ body.rainbow h1 {
     text-overflow: ellipsis;
     max-width: 40%;
     color: rgba(255, 255, 255, 0.32);
-    font-family: 'Minecraftia', sans-serif;
+    font-family: var(--current-font);
 }
 
 .corner-link:hover {
@@ -382,6 +400,7 @@ body.rainbow h1 {
     gap: 20px;
     max-height: 90vh;
     overflow-y: auto;
+    padding-right: 12px; /* Add space for scrollbar */
 }
 
 .popup-text {
@@ -427,4 +446,33 @@ body.rainbow h1 {
         font-size: min(12px, 3.5vw);
         padding: 10px;
     }
+}
+
+/* Add this new class */
+.opposite-font {
+    font-family: var(--opposite-font);
+}
+
+/* Add Minecraft-style scrollbar to popup content */
+.popup-content::-webkit-scrollbar {
+    width: 12px;                    /* Width of scrollbar */
+}
+
+.popup-content::-webkit-scrollbar-track {
+    background: #383838;            /* Track color */
+    border: 2px solid #1a1a1a;      /* Track border */
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background: #686868;            /* Scrollbar thumb color */
+    border: 2px solid #1a1a1a;      /* Thumb border */
+}
+
+.popup-content::-webkit-scrollbar-thumb:hover {
+    background: #787878;            /* Thumb hover color */
+}
+
+/* Font switching class */
+.opposite-font {
+    font-family: var(--opposite-font);  /* Used for toggle button text */
 }
