@@ -20,16 +20,50 @@
         <h1><a href="index.html" style="color: inherit; text-decoration: none;">models</a></h1>
         <div class="scroll-container">
             <div class="model-grid">
-                <!-- Fixed the closing div tags and structure -->
-                <!-- To include a new model, ensure the following steps are taken:
-                1. Add a new <div class="model-box"> element with a unique data-text attribute for the model description.
-                2. Within the model-box, include an <img> element with the src attribute pointing to the model's image.
-                3. In script.js, update the switch statement in the box.addEventListener('click') function to include the new model's alt text and media items.
-                4. Ensure the media items (images or videos) are correctly referenced in the assets directory.
-                -->
-                <div class="model-box" data-text="mono/stereo bluetooth speakers"> <!-- lapis - a simple bluetooth speaker/player I forget what I said -->
+
+                <!-- Model Box Structure and Content Guidelines (created by ai to help future me)-->
+<!-- To include a new model, you need to update three locations:
+
+1. HTML (models.html):
+   - Add a new <div class="model-box"> with:
+     * data-text attribute for basic description
+     * image-container with your model image
+     * hover-text for the hover overlay message
+
+2. JavaScript Media Items (script.js - first switch case):
+   - Add a new case matching your img alt text
+   - Include array of media items (images/videos) for the popup gallery
+   Example:
+   case 'your-alt-text':
+       mediaItems = [
+           { type: 'image', src: 'path/to/image.jpg' }
+       ];
+       break;
+
+3. JavaScript Content (script.js - second switch case):
+   - Add another case matching your img alt text
+   - Include the detailed HTML content for the popup
+   Example:
+   case 'your-alt-text':
+       detailedContent = `
+           <h3>Title</h3>
+           <p>Description</p>
+           <h3>Features</h3>
+           <ul>
+               <li>Feature 1</li>
+           </ul>
+       `;
+       break;
+
+Ensure all media files are properly placed in the assets directory before referencing them.
+-->
+
+                <div class="model-box" data-text="mono/stereo bluetooth speakers">
                     <div class="image-container">
                         <img src="assets/images/models/cornflower.jpg" alt="lapis">
+                    </div>
+                    <div class="hover-text">
+                        click to view my beta model : bluetooth 
                     </div>
                 </div>
 
@@ -37,11 +71,17 @@
                     <div class="image-container">
                         <img src="assets/images/models/dirt_mp3.jpg" alt="dirt">
                     </div>
+                    <div class="hover-text">
+                        click to view my working concept : dirt
+                    </div>
                 </div>
 
                 <div class="model-box" data-text="custom 12px jukebox design with enlarged border to make a chunky box">
                     <div class="image-container">
                         <img src="assets/images/models/minichunkyjuke.jpg" alt="chunky juke">
+                    </div>
+                    <div class="hover-text">
+                        click to view my lil guys
                     </div>
                 </div>
 
@@ -49,17 +89,26 @@
                     <div class="image-container">
                         <img src="assets/images/models/buttoncontroljuke.jpg" alt="buttoncontrol">
                     </div>
+                    <div class="hover-text">
+                        click to view my working mp3 prototype
+                    </div>
                 </div>
 
                 <div class="model-box" data-text="changed the 16px texture to 14px to test looks">
                     <div class="image-container">
                         <img src="assets/images/models/paperjuke.jpg" alt="paper juke">
                     </div>
+                    <div class="hover-text">
+                        click to view my paper project!
+                    </div>
                 </div>  <!-- Added closing div -->
 
                 <div class="model-box" data-text="first trial - first 2 boxes created">
                     <div class="image-container">
                         <img src="assets/images/models/ben_chunky.jpg" alt="first try">
+                    </div>
+                    <div class="hover-text">
+                        click to view my first attemptive print
                     </div>
                 </div>
 

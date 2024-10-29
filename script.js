@@ -230,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 case 'first try':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/ben_chunky.jpg' },
-                        { type: 'image', src: 'assets/images/models/first try.jpg' }
+                        { type: 'image', src: 'assets/images/models/first try.jpg' },
+                        { type: 'image', src: 'assets/images/models/ben_chunky.jpg' }
                     ];
                     break;
                 
@@ -242,6 +242,123 @@ document.addEventListener('DOMContentLoaded', () => {
             // Preload all media items when popup opens
             preloadMediaItems(mediaItems);
 
+            // Add detailed text content for each model
+            let detailedContent;
+            switch (box.querySelector('img').alt) {
+                case 'lapis':
+                    detailedContent = `
+                        <h3>$64 - lapis/cornflower : a juke 32 bluetooth speaker</h3>
+                        <p>The cheapest, easiest, best feeling, smallest, longest lasting (that's what she said) jukebox iteration.</p>
+                        
+                        <h3>features</h3>
+                        <ul>
+                            <li>Bluetooth 5.4</li>
+                            <li>One Full Range Speaker Driver</li>                            
+                            <li>400mah - 6 hour battery life at moderate volume (calculated)</li>
+                            <li>150mah - 2-3 hour battery life at moderate volume (tested on initial prototypes)</li>
+                            <li>USB-C PD supported charging port (if I solder the 5.1k resistors)</li>
+                            <li>Elmers Glued Construction Paper for better bass response</li>
+                            <li>3.5mm auxiliary input (sadly only input)</li>
+                            <li>Stereo pairing capability when you buy 2. They will connect and play bluetooth in stereo :3</li>                         
+                        </ul>
+                        
+                        <h3>notes</h3>
+                        <p>I may iterate more to create a better product, but the main focus is a better model jukebox.</p>
+                        
+                        <h3>more notes</h3>                    
+                        <p>Though each box costs just $7 in electronics and requires soldering only 4 wires, this project is no cakewalk. It also requires 2 small resistors that I shouldn't be legally allowed to hand solder.</p>
+                        <p>The 0402 resistors are 0.04 inches long and 0.02 inches wide. Picture the tiniest ant you've ever seen scurrying across your desk - that's probably bigger than one of these resistors.</p>
+                    `;
+                    break;
+
+                case 'dirt':
+                    detailedContent = `
+                        <h3>dirt : a juke32 mp3 player</h3>
+                        <p>The first model that was designated a name since it was suppost to be sold eventually.</p>
+                        
+                        <h3>features</h3>
+                        <ul>
+                            <li>Simple control disc for power, volume, and track selection</li>                            
+                            <li>USB-c power input</li>
+                            <li>3.5mm headphone output</li>
+                            <li>FAT32 micro sdcard slot</li>
+                        </ul>
+                        
+                        <h3>notes</h3>
+                        <p>The control disc was a great concept but isn't an exact science when you have as many variables as you do when designing a 3d lasercut box with 2d inkscape with parts that have variable dimensions.</p>
+                        <p>It quickly turned into guess and check. With that and all of the other parts I had to print on different types of wood I didn't want to do more than one(no 3d printer to make this easier). On top of that, it was so tedious and terrible to have to glue everything precisely, cut and solder wires precisely, and still not have the correct fit and have to iterate again.</p>
+                        <p>This led me to wanting a simple, easy to solder and implement bluetooth box. Oh I forgot to mention that quality micro sd cards are cheap, but are too expensive for this project. Both morally and practically I cannot buy cheap memory in bulk.</p>
+                    `;
+                    break;
+
+                case 'chunky juke':
+                    detailedContent = `
+                        <h3>mini chunky jukebox</h3>
+                        <p>Using the chunky model and a newly calibrated laser engraver I used the thinnest wood I had and printed a few lilguys.</p>
+                        
+                        <h3>design features</h3>
+                        <ul>
+                            <li>Custom 12px enlarged border design</li>
+                            <li>Doubble wide border</li>
+                            <li>Enhanced visual presence</li>
+                            <li>Maintains Minecrafy Look and Aesthetic</li>
+                            <li>Amazing 0.0007in Precision</li>
+                            <li>so cool</li>                    
+                        </ul>
+                        
+                        <h3>notes</h3>
+                        <p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm small chunky jukebox</p>
+                    `;
+                    break;
+
+                case 'buttoncontrol':
+                    detailedContent = `
+                        <h3>button control prototype</h3>
+                        <p>I really just wanted to have a working jukebox, so I built this.</p>
+                        
+                        <h3>features</h3>
+                        <ul>
+                            <li>Switches</li>
+                            <li>Combined Volume and Track Select Sunctions</li>
+                            <li>9v rechargable Lipo Battery</li>
+                        </ul>
+                        
+                        <h3>notes</h3>
+                        <p>Due to the 3.7v Lithium Ion battery being boosted to 9v and then imediatly bucked down to 5v... The battery life is only 1.5-3 hours. And the knockoff DFplayer mini has a terrible stand-by current draw.</p>
+                    `;
+                    break;
+
+                case 'paper juke':
+                    detailedContent = `
+                        <h3>14px paper jukebox</h3>
+                        <p>An experiment using 14px textures instead of the 16px default Minecraft texture.</p>
+                        
+                        <h3>the idea</h3>
+                        <p>Changing the texture resolution is unique and makes the border larger allowing for larger thickness wood to be used for a similar sized wooden box.</p>
+                    `;
+                    break;
+
+                case 'first try':
+                    detailedContent = `
+                        <h3>initial prototypes</h3>
+                        <p>The first experimental boxes that started the entire project.</p>
+                        
+                        <h3>design process</h3>
+                        <ul>
+                            <li>MS Paint concept</li>
+                            <li>Inkscape design with interlocking edges</li>
+                            <li>Lightburn adjustments and text additions</li>
+                        </ul>
+                        
+                        <h3>lessons learned</h3>
+                        <p>These initial attempts provided valuable insights into design constraints and design improvements.</p>
+                    `;
+                    break;
+
+                default:
+                    detailedContent = `<p>${box.getAttribute('data-text')}</p>`;
+            }
+
             popup.innerHTML = `
                 <div class="popup-content">
                     <span class="close">&times;</span>
@@ -250,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="media-display"></div>
                         ${mediaItems.length > 1 ? '<button class="nav-btn next">&#10095;</button>' : ''}
                     </div>
-                    <div class="popup-text">${text}</div> <!-- Ensure this is below the media display -->
+                    <div class="popup-text">${detailedContent}</div>
                 </div>
             `;
 
