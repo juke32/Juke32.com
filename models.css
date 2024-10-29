@@ -48,15 +48,13 @@ h1 {
 }
 
 .scroll-container {
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
-    height: calc(100vh - 80px); /* Adjusted to account for the fixed header */
+    height: calc(100vh - 80px);
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 20px;
-    margin-top: 80px; /* Adjusted to prevent content from going under the header */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 80px;
 }
 
 .model-grid {
@@ -76,6 +74,7 @@ h1 {
     cursor: pointer;
     transition: transform 0.3s ease;
     user-select: none;
+    position: relative;
 }
 
 .model-box:hover {
@@ -117,6 +116,7 @@ h1 {
     flex-direction: column; /* Stack children vertically */
     align-items: center;
     gap: 20px; /* Space between elements */
+    overflow-y: auto;
 }
 
 .popup-image {
@@ -131,7 +131,9 @@ h1 {
     font-family: 'Minecraftia', sans-serif;
     padding: 20px;
     width: 100%;
-    margin-top: 20px; /* Space above the text */
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .close {
@@ -344,4 +346,85 @@ body.rainbow h1 {
     .bottom-left, .bottom-right { bottom: 2vw; }
     .top-left, .bottom-left { left: 2vw; }
     .top-right, .bottom-right { right: 2vw; }
+}
+
+/* Updated hover text styles */
+.hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;  /* Important: include padding in width/height calculation */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: min(16px, 2.5vw);  /* Responsive font size */
+    line-height: 1.4;
+    word-wrap: break-word;    /* Allow text to wrap */
+    overflow: hidden;         /* Prevent text overflow */
+}
+
+.model-box:hover .hover-text {
+    opacity: 1;
+}
+
+/* Update popup content styles */
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.popup-text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-text h3 {
+    color: #bbbbbb;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.popup-text p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.popup-text ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.popup-text li {
+    margin: 5px 0;
+}
+
+/* Adjust font size for mobile */
+@media (max-width: 768px) {
+    .hover-text {
+        font-size: min(14px, 3vw);
+        padding: 15px;
+    }
+}
+
+/* Adjust for very small screens */
+@media (max-width: 480px) {
+    .hover-text {
+        font-size: min(12px, 3.5vw);
+        padding: 10px;
+    }
 }
