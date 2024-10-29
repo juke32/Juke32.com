@@ -253,3 +253,53 @@ h1 sup a {
         font-size: 28px; /* Slightly larger for mobile */
     }
 }
+
+/* Keyframe animations with viewport-relative heights */
+@keyframes bounce3 {
+    0%, 15% { transform: translateY(0); }        /* Start position */
+    15%, 25% { transform: translateY(-2vh); }    /* Slower rise (using 2% of viewport height) */
+    25%, 35% { transform: translateY(-2vh); }    /* Hold at top */
+    35%, 45% { transform: translateY(0); }       /* Slower fall */
+    45%, 100% { transform: translateY(0); }      /* Long pause at bottom */
+}
+
+@keyframes bounce2 {
+    0%, 25% { transform: translateY(0); }        /* Start position */
+    25%, 35% { transform: translateY(-2vh); }    /* Slower rise */
+    35%, 45% { transform: translateY(-2vh); }    /* Hold at top */
+    45%, 55% { transform: translateY(0); }       /* Slower fall */
+    55%, 100% { transform: translateY(0); }      /* Long pause at bottom */
+}
+
+/* Animation triggers on h1 hover */
+h1:hover #superscript-link .digit-3 {
+    animation: 
+        bounce3                                
+        6s                                     /* 6 second duration */
+        cubic-bezier(0.4, 0.1, 0.3, 1)        /* Smooth easing */
+        infinite;                              
+}
+
+h1:hover #superscript-link .digit-2 {
+    animation: 
+        bounce2                                
+        6s                                     
+        cubic-bezier(0.4, 0.1, 0.3, 1)        
+        infinite;                              
+}
+
+#superscript-link {
+    display: inline-block;
+}
+
+#superscript-link .digit {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+/* Cubic-bezier explanation:
+    0.34 - Start speed (slower start)
+    1.56 - First control point (creates high arc)
+    0.64 - Second control point (controls descent)
+    1    - End speed (smooth finish)
+*/
