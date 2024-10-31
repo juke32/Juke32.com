@@ -263,10 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         
                         <h3>notes</h3>
-                        <p>I may iterate more to create a better product, but the main focus is a better model jukebox.</p>
+                        <p>I may iterate more to create a better product, but the main focus is to make a disc controlled jukebox.</p>
                         
                         <h3>more notes</h3>                    
-                        <p>Though each box costs just $7 in electronics and requires soldering only 4 wires, this project is no cakewalk. It also requires 2 small resistors that I shouldn't be legally allowed to hand solder.</p>
+                        <p>Though each box costs under $10 in electronics and requires soldering only 4 wires, this project is no cakewalk. It also requires 2 small resistors that I shouldn't be legally allowed to hand solder.</p>
                         <p>The 0402 resistors are 0.04 inches long and 0.02 inches wide. Picture the tiniest ant you've ever seen scurrying across your desk - that's probably bigger than one of these resistors.</p>
                     `;
                     break;
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'dirt':
                     detailedContent = `
                         <h3>dirt : a juke32 mp3 player</h3>
-                        <p>The first model that was designated a name since it was suppost to be sold eventually.</p>
+                        <p>The first model that was designated a name since I wanted to make a lot.</p>
                         
                         <h3>features</h3>
                         <ul>
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h3>design features</h3>
                         <ul>
                             <li>Custom 12px enlarged border design</li>
-                            <li>Doubble wide border</li>
+                            <li>Double wide border</li>
                             <li>Enhanced visual presence</li>
                             <li>Maintains Minecrafy Look and Aesthetic</li>
                             <li>Amazing 0.0007in Precision</li>
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         
                         <h3>notes</h3>
-                        <p>Due to the 3.7v Lithium Ion battery being boosted to 9v and then imediatly bucked down to 5v... The battery life is only 1.5-3 hours. And the knockoff DFplayer mini has a terrible stand-by current draw.</p>
+                        <p>Due to the 3.7v Lithium Ion battery being boosted to 9v and then imediatly bucked down to 5v... The battery life is only 1.5-3 hours. And the mp3 module I used has a terrible stand-by current draw.</p>
                     `;
                     break;
 
