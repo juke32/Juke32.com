@@ -1,7 +1,8 @@
 /* Font definitions for the site */
 @font-face {
     font-family: 'Minecraftia';
-    src: url('assets/fonts/Minecraft.otf') format('truetype');
+    src: url('assets/fonts/Minecraft.otf') format('opentype'),
+         url('assets/fonts/Monocraft.ttf') format('truetype');
 }
 
 @font-face {
@@ -12,7 +13,7 @@
 /* CSS variables for font switching functionality */
 :root {
     --current-font: 'Minecraftia', sans-serif;     /* Default font for most text */
-    --opposite-font: 'GalacticAlphabet', sans-serif;  /* Font used for the toggle button */
+    --opposite-font: 'GalacticAlphabet', 'Minecraftia', sans-serif;  /* Font used for the toggle button */
 }
 
 /* Base body styles */
