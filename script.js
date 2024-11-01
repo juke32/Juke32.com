@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
             switch (box.querySelector('img').alt) {
                 case 'lapis':
                     detailedContent = `
-                        <h3>$64 - lapis/cornflower : a juke 32 bluetooth speaker</h3>
+                        <h3>lapis/cornflower : a juke 32 bluetooth speaker</h3>
                         <p>The cheapest, easiest, best feeling, smallest, longest lasting (that's what she said) jukebox iteration.</p>
                         
                         <h3>features</h3>
