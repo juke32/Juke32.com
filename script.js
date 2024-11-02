@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mp3Files = [
         'banjo', 'bass', 'bassb', 'bongo', 'bowl', 'bugle', 'chair', 'glass', 'guitar', 'hat',
         'hit', 'kalimba', 'melodian', 'piano', 'pluckp', 'recorder', 'steeldrum',
-        'steelguitar', 'vibraphone', 'violin', 'cat'
+        'steelguitar', 'vibraphone', 'violin', 'eevie'
     ].map(file => `assets/note/${file}.mp3`);
 
     // Throttle function to limit click event frequency
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'dirt':
                     detailedContent = `
                         <h3>dirt : a juke32 mp3 player</h3>
-                        <p>The first model that was designated a name since I wanted to make a lot.</p>
+                        <p>The first model that was designated a model name since I wanted to make a few.</p>
                         
                         <h3>features</h3>
                         <ul>
