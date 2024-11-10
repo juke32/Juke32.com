@@ -25,42 +25,42 @@
         <div class="scroll-container">
             <div class="model-grid">
 
-                <!-- Model Box Structure and Content Guidelines (created by ai to help future me)-->
-<!-- To include a new model, you need to update three locations:
+                <!-- Model Box Structure and Content Guidelines (created by ai to help future me) -->
+                <!-- To include a new model, you need to update three locations:
 
-1. HTML (models.html):
-   - Add a new <div class="model-box"> with:
-     * data-text attribute for basic description
-     * image-container with your model image
-     * hover-text for the hover overlay message
+                1. HTML (models.html):
+                   - Add a new <div class="model-box"> with:
+                     * data-text attribute for basic description
+                     * image-container with your model image
+                     * hover-text for the hover overlay message
 
-2. JavaScript Media Items (script.js - first switch case):
-   - Add a new case matching your img alt text
-   - Include array of media items (images/videos) for the popup gallery
-   Example:
-   case 'your-alt-text':
-       mediaItems = [
-           { type: 'image', src: 'path/to/image.jpg' }
-       ];
-       break;
+                2. JavaScript Media Items (script.js - first switch case):
+                   - Add a new case matching your img alt text
+                   - Include array of media items (images/videos) for the popup gallery
+                   Example:
+                   case 'your-alt-text':
+                       mediaItems = [
+                           { type: 'image', src: 'path/to/image.jpg' }
+                       ];
+                       break;
 
-3. JavaScript Content (script.js - second switch case):
-   - Add another case matching your img alt text
-   - Include the detailed HTML content for the popup
-   Example:
-   case 'your-alt-text':
-       detailedContent = `
-           <h3>Title</h3>
-           <p>Description</p>
-           <h3>Features</h3>
-           <ul>
-               <li>Feature 1</li>
-           </ul>
-       `;
-       break;
+                3. JavaScript Content (script.js - second switch case):
+                   - Add another case matching your img alt text
+                   - Include the detailed HTML content for the popup
+                   Example:
+                   case 'your-alt-text':
+                       detailedContent = `
+                           <h3>Title</h3>
+                           <p>Description</p>
+                           <h3>Features</h3>
+                           <ul>
+                               <li>Feature 1</li>
+                           </ul>
+                       `;
+                       break;
 
-Ensure all media files are properly placed in the assets directory before referencing them.
--->
+                Ensure all media files are properly placed in the assets directory before referencing them.
+                -->
 
                 <div class="model-box" data-text="mono/stereo bluetooth speakers">
                     <div class="image-container">
