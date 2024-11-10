@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li>SD cards are too expensive to buy in bulk (do not buy cheap micro sd cards, they die very quickly)</li>                            
                             <li>Too many wires to strip and solder</li>
                             <li>No mechanical design could reliably control power, volume, and track selection</li>
-                            <li>No indicator to differentiate between the box being off vs idle</li>
+                            <li>No indicator to differentiate between the box being off vs. idle</li>
                             <li>Uses too much power on idle</li>
                             <li>No room for battery / unsafe where I could put it (unless I change dimensions)</li>
                             <li>Natural differences in wood and switch thickness</li>
