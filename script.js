@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         { type: 'image', src: 'assets/images/models/ble+pig_stain.jpg'},
                         { type: 'image', src: 'assets/images/models/bluetooth_ble.jpg' },
                         { type: 'image', src: 'assets/images/models/bluetooth_table.jpg' },
-                        { type: 'video', src: 'assets/videos/lapis_ble_demo.mp4' }
+                        { type: 'video', src: 'assets/videos/ble_demo.mp4' }
                     ];
                     break;
 
