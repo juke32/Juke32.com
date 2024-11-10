@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         
                         <h3>notes</h3>
-                        <p>Due to the 3.7v Lithium Ion battery being boosted to 9v and then imediatly bucked down to 5v... The battery life is only 1.5-3 hours. And the mp3 module I used has a terrible stand-by current draw.</p>
+                        <p>Due to the 3.7v Lithium Ion battery being boosted to 9v and then immediately bucked down to 5v... The battery life is only 1.5-3 hours. And the mp3 module I used has a terrible stand-by current draw.</p>
                     `;
                     break;
 
