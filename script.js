@@ -184,13 +184,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     ];
                     break;
 
-                case 'lapis':
+                case 'bluetooth':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/cornflower.jpg' },
-                        { type: 'image', src: 'assets/images/models/cornflower_internal.jpg' },
-                        { type: 'image', src: 'assets/images/models/corn-pig_stain.jpg'},
-                        { type: 'image', src: 'assets/images/models/lapis_ble.jpg' },
-                        { type: 'image', src: 'assets/images/models/lapis_table.jpg' },
+                        { type: 'image', src: 'assets/images/models/bluetooth.jpg' },
+                        { type: 'image', src: 'assets/images/models/bluetooth_internal.jpg' },
+                        { type: 'image', src: 'assets/images/models/ble+pig_stain.jpg'},
+                        { type: 'image', src: 'assets/images/models/bluetooth_ble.jpg' },
+                        { type: 'image', src: 'assets/images/models/bluetooth_table.jpg' },
                         { type: 'video', src: 'assets/videos/lapis_ble_demo.mp4' }
                     ];
                     break;
@@ -245,9 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add detailed text content for each model
             let detailedContent;
             switch (box.querySelector('img').alt) {
-                case 'lapis':
+                case 'bluetooth':
                     detailedContent = `
-                        <h3>lapis/cornflower : a juke 32 bluetooth speaker</h3>
+                        <h3>bluetooth concept</h3>
                         <p>The cheapest, easiest, best feeling, smallest, longest lasting (that's what she said) jukebox iteration.</p>
                         
                         <h3>features</h3>
@@ -257,13 +257,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li>400mah - 6 hour battery life at moderate volume (calculated)</li>
                             <li>150mah - 2-3 hour battery life at moderate volume (tested on initial prototypes)</li>
                             <li>USB-C PD supported charging port (if I solder the 5.1k resistors)</li>
-                            <li>Elmers Glued Construction Paper for better bass response</li>
                             <li>3.5mm auxiliary input (sadly only input)</li>
                             <li>Stereo pairing capability when you buy 2. They will connect and play bluetooth in stereo :3</li>                         
                         </ul>
                         
                         <h3>notes</h3>
-                        <p>I may iterate more to create a better product, but the main focus is to make a disc controlled jukebox.</p>
+                        <p>I may iterate more to make this model a better product, but the main focus is to make a disc controlled jukebox.</p>
                         
                         <h3>more notes</h3>                    
                         <p>Though each box costs under $10 in electronics and requires soldering only 4 wires, this project is no cakewalk. It also requires 2 small resistors that I shouldn't be legally allowed to hand solder.</p>
@@ -274,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'dirt':
                     detailedContent = `
                         <h3>dirt : a juke32 mp3 player</h3>
-                        <p>The first model that was designated a model name since I wanted to make a few.</p>
+                        <p>The first model given a name for being marketable.</p>
                         
                         <h3>features</h3>
                         <ul>
@@ -284,10 +283,22 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li>FAT32 micro sdcard slot</li>
                         </ul>
                         
+
+                        <h3>why not dirt?</h3>
+                        <ul>
+                            <li>SD cards are too expensive to buy in bulk (do not buy cheap micro sd cards, they die very quickly)</li>                            
+                            <li>Too many wires to strip and solder</li>
+                            <li>No mechanical design could reliably control power, volume, and track selection</li>
+                            <li>No indicator to differentiate between the box being off vs idle</li>
+                            <li>Uses too much power on idle</li>
+                            <li>No room for battery / unsafe where I could put it (unless I change dimensions)</li>
+                            <li>Natural differences in wood and switch thickness</li>
+                        </ul>
+
                         <h3>notes</h3>
-                        <p>The control disc was a great concept but isn't an exact science when you have as many variables as you do when designing a 3d lasercut box with 2d inkscape with parts that have variable dimensions.</p>
-                        <p>It quickly turned into guess and check. With that and all of the other parts I had to print on different types of wood I didn't want to do more than one(no 3d printer to make this easier). On top of that, it was so tedious and terrible to have to glue everything precisely, cut and solder wires precisely, and still not have the correct fit and have to iterate again.</p>
-                        <p>This led me to wanting a simple, easy to solder and implement bluetooth box. Oh I forgot to mention that quality micro sd cards are cheap, but are too expensive for this project. Both morally and practically I cannot buy cheap memory in bulk.</p>
+                        <p>The control disc was a great concept but proved difficult to implement due to not finding low-travel small latching switches. The varying dimensions of stuff I did buy also made designing challenging.</p>
+                        <p>The project devolved into rapid iteration (guessing and checking). Having to engrave/cut 3 different thicknesses of wood just to make my design work. (no 3d printer to make this easier) The process was tedious and there were too many unknowns to account for.</p>
+                        <p>Why couldn't I just buy some board that already has a switch and battery management circuit? I did just that with Lapis</p>
                     `;
                     break;
 
