@@ -1,3 +1,1 @@
-----
-juke32.com
-----
+# [juke32.com](https://juke32.com)
