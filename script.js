@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mp3Files = [
         'banjo', 'bass', 'bassb', 'bongo', 'bowl', 'bugle', 'chair', 'glass', 'guitar', 'hat',
         'hit', 'kalimba', 'melodian', 'piano', 'pluckp', 'recorder', 'steeldrum',
-        'steelguitar', 'vibraphone', 'violin', 'eevie'
+        'steelguitar', 'vibraphone', 'violin', 'evie'
     ].map(file => `assets/note/${file}.mp3`);
 
     // Throttle function to limit click event frequency
