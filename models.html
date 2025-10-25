@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>juke^32 models</title>
+    <link rel="preload" href="assets/fonts/Minecraft.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="assets/fonts/minecraft-sga.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="models.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js" defer></script>
@@ -13,6 +15,7 @@
 
 </head>
 <body>
+    <!-- Removed blocking font script for performance; using font-display:swap in @font-face. -->
     <div id="particles-js"></div>
     <!-- Add these lines right after particles-js div -->
     <a href="https://trello.com/b/abEXFTkS" class="corner-link top-left">trello</a>
@@ -40,7 +43,7 @@
                    Example:
                    case 'your-alt-text':
                        mediaItems = [
-                           { type: 'image', src: 'path/to/image.jpg' }
+                           { tvype: 'image', src: 'path/to/image.jpg' }
                        ];
                        break;
 
@@ -62,9 +65,20 @@
                 Ensure all media files are properly placed in the assets directory before referencing them.
                 -->
 
+
+
                 <div class="model-box" data-text="mono/stereo bluetooth speakers">
                     <div class="image-container">
-                        <img src="assets/images/models/bluetooth.jpg" alt="bluetooth">
+                        <img src="assets/models/lapis-v1-initial.jpg" alt="lapis-v1">
+                    </div>
+                    <div class="hover-text">
+                        click to the first iteration of 'lapis'
+                    </div>
+                </div>
+
+                <div class="model-box" data-text="mono/stereo bluetooth speakers">
+                    <div class="image-container">
+                        <img src="assets/models/bluetooth.jpg" alt="bluetooth">
                     </div>
                     <div class="hover-text">
                         click to view my beta model : bluetooth 
@@ -73,7 +87,7 @@
 
                 <div class="model-box" data-text="dirt - a basic mp3 player">
                     <div class="image-container">
-                        <img src="assets/images/models/dirt_mp3.jpg" alt="dirt">
+                        <img src="assets/models/dirt_mp3.jpg" alt="dirt">
                     </div>
                     <div class="hover-text">
                         click to view my working concept : dirt
@@ -82,7 +96,7 @@
 
                 <div class="model-box" data-text="custom 12px jukebox design with enlarged border to make a chunky box">
                     <div class="image-container">
-                        <img src="assets/images/models/minichunkyjuke.jpg" alt="chunky juke">
+                        <img src="assets/models/minichunkyjuke.jpg" alt="chunky juke">
                     </div>
                     <div class="hover-text">
                         click to view my lil guys
@@ -91,7 +105,7 @@
 
                 <div class="model-box" data-text="testing mp3 player with simple button control">
                     <div class="image-container">
-                        <img src="assets/images/models/buttoncontroljuke.jpg" alt="buttoncontrol">
+                        <img src="assets/models/buttoncontroljuke.jpg" alt="buttoncontrol">
                     </div>
                     <div class="hover-text">
                         click to view my working mp3 prototype
@@ -100,7 +114,7 @@
 
                 <div class="model-box" data-text="changed the 16px texture to 14px to test looks">
                     <div class="image-container">
-                        <img src="assets/images/models/paperjuke.jpg" alt="paper juke">
+                        <img src="assets/models/paperjuke.jpg" alt="paper juke">
                     </div>
                     <div class="hover-text">
                         click to view my paper project!
@@ -109,7 +123,7 @@
 
                 <div class="model-box" data-text="first trial - first 2 boxes created">
                     <div class="image-container">
-                        <img src="assets/images/models/ben_chunky.jpg" alt="first try">
+                        <img src="assets/models/ben_chunky.jpg" alt="first try">
                     </div>
                     <div class="hover-text">
                         click to view my first attemptive print

@@ -3,11 +3,13 @@
     font-family: 'Minecraftia';
     src: url('assets/fonts/Minecraft.otf') format('opentype'),
          url('assets/fonts/Monocraft.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'GalacticAlphabet';
     src: url('assets/fonts/minecraft-sga.ttf') format('truetype');
+    font-display: swap;
 }
 
 /* CSS variables for font switching functionality */
@@ -317,7 +319,6 @@ body.rainbow h1 {
     z-index: 1000;
     transition: color 0.3s, font-size 0.3s;
     font-size: 2vw;
-    max-font-size: 18px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -329,7 +330,6 @@ body.rainbow h1 {
 .corner-link:hover {
     color: rgba(255, 255, 255, 1);
     font-size: 2.2vw;
-    max-font-size: 20px;
 }
 
 .top-left { top: 1vw; left: 1vw; }
@@ -340,14 +340,12 @@ body.rainbow h1 {
 @media (max-width: 768px) {
     .corner-link {
         font-size: 3.5vw;
-        max-font-size: 24px;
         max-width: 45%;
         color: rgba(255, 255, 255, 0.32);
     }
 
     .corner-link:hover {
         font-size: 3.7vw;
-        max-font-size: 25px;
     }
 }
 
