@@ -176,62 +176,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Define media items for each model
             switch (box.querySelector('img').alt) {
-                case 'cornflower?':
+                case 'lapis-v1':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/image.jpg' },
-                        { type: 'image', src: 'assets/images/models/image_2.jpg' },
-                        { type: 'video', src: 'assets/videos/image_demo.mp4' }
+                        { type: 'image', src: 'assets/models/lapis-v1-initial.jpg' },
+                        { type: 'image', src: 'assets/models/lapis-v1-mainn.jpg' },
+                        { type: 'image', src: 'assets/models/lapis-v1-back.jpg' },
+                        { type: 'image', src: 'assets/models/lapis-v1-internal.jpg' },
+                        { type: 'image', src: 'assets/models/lapis-v1-compare.jpg' },
+                        { type: 'image', src: 'assets/models/lapis-v1-main.jpg' },
+                        { type: 'image', src: 'assets/models/lapis-v1-work.jpg' },
+                        { type: 'video', src: 'assets/videos/lapis-v1-demo.mp4' } //doesn't exist yet
                     ];
                     break;
 
                 case 'bluetooth':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/bluetooth.jpg' },
-                        { type: 'image', src: 'assets/images/models/bluetooth_internal.jpg' },
-                        { type: 'image', src: 'assets/images/models/ble+pig_stain.jpg'},
-                        { type: 'image', src: 'assets/images/models/bluetooth_ble.jpg' },
-                        { type: 'image', src: 'assets/images/models/bluetooth_table.jpg' },
-                        { type: 'video', src: 'assets/videos/ble_demo.mp4' }
+                        { type: 'image', src: 'assets/models/bluetooth.jpg' },
+                        { type: 'image', src: 'assets/models/bluetooth_internal.jpg' },
+                        { type: 'image', src: 'assets/models/ble+pig_stain.jpg'},
+                        { type: 'image', src: 'assets/models/bluetooth_ble.jpg' },
+                        { type: 'image', src: 'assets/models/bluetooth_table.jpg' },
+                        { type: 'video', src: 'assets/models/bluetooth-tiktok-con.mp4' } // may want to redo/recrop lol
                     ];
                     break;
 
                 case 'dirt':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/dirt_mp3.jpg' },
-                        { type: 'image', src: 'assets/images/models/dirt_meets_steve.jpg' },
-                        { type: 'image', src: 'assets/images/models/dirt_stain.jpg' },
-                        { type: 'image', src: 'assets/images/models/dirt_naked.jpg' }
+                        { type: 'image', src: 'assets/models/dirt_mp3.jpg' },
+                        { type: 'image', src: 'assets/models/dirt_meets_steve.jpg' },
+                        { type: 'image', src: 'assets/models/dirt_stain.jpg' },
+                        { type: 'image', src: 'assets/models/dirt_naked.jpg' }
                     ];
                     break;
 
                 case 'chunky juke':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/minichunkyjuke.jpg' },
-                        { type: 'image', src: 'assets/images/models/tiny juke32.png' },
-                        { type: 'image', src: 'assets/images/models/chunkychunk.jpg' }
+                        { type: 'image', src: 'assets/models/minichunkyjuke.jpg' },
+                        { type: 'image', src: 'assets/models/tiny juke32.png' },
+                        { type: 'image', src: 'assets/models/chunkychunk.jpg' }
                     ];
                     break;
 
                 case 'buttoncontrol':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/buttoncontroljuke.jpg' },
-                        { type: 'image', src: 'assets/images/models/buttoncontrolchunky.jpg' },
-                        { type: 'image', src: 'assets/images/models/buttoncontrolproto.jpg' }
+                        { type: 'image', src: 'assets/models/buttoncontroljuke.jpg' },
+                        { type: 'image', src: 'assets/models/buttoncontrolchunky.jpg' },
+                        { type: 'image', src: 'assets/models/buttoncontrolproto.jpg' }
                     ];
                     break;
 
                 case 'paper juke':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/paperjuke.jpg' },
-                        { type: 'image', src: 'assets/images/models/paperjukebox.jpg' },
-                        { type: 'image', src: 'assets/images/models/14px mini jukebox cutout (enlarged).png' }
+                        { type: 'image', src: 'assets/models/paperjuke.jpg' },
+                        { type: 'image', src: 'assets/models/paperjukebox.jpg' },
+                        { type: 'image', src: 'assets/models/14px mini jukebox cutout (enlarged).png' }
                     ];
                     break;
 
                 case 'first try':
                     mediaItems = [
-                        { type: 'image', src: 'assets/images/models/first try.jpg' },
-                        { type: 'image', src: 'assets/images/models/ben_chunky.jpg' }
+                        { type: 'image', src: 'assets/models/first try.jpg' },
+                        { type: 'image', src: 'assets/models/ben_chunky.jpg' }
                     ];
                     break;
                 
@@ -245,6 +250,37 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add detailed text content for each model
             let detailedContent;
             switch (box.querySelector('img').alt) {
+                
+                case 'lapis-v1':
+                    detailedContent = `
+                        <h3>lapis v1</h3>
+                        <p>soooooooooooooo close</p>
+                        
+                        <h3>features</h3>
+                        <ul>
+                            <li>Bluetooth 5.4</li>
+                            <li>One large Speaker Driver (I had to dremel the aux port on every board to even make it fit lol)</li>
+                            <li>400mah - 6 hour battery life at moderate volume (calculated)</li>
+                            <li>USB-C PD supported charging port</li>
+                            <li>3.5mm auxiliary input (sadly only input)</li>
+                            <li>Stereo pairing capability when you buy 2. They will connect and play bluetooth in stereo :3</li>
+                        </ul>
+                        
+                        <h3>the not-so-great stuff</h3>
+                        <p>I iterated this to be the best quality speaker, while being easy to make and financially viable......... but nothing is perfect</p>
+                        
+                        <ul>
+                            <li>something with the master/slave stereo mode makes them get corrupted when more are on at one time</li>
+                            <li>no response from the board seller of these (DAU / BenLi Audio) about their firmware issues</li>
+                            <li>I found who makes the bluetooth chips but no firmware to be found</li>
+                        </ul>
+                        
+                        <h3>what's next</h3>
+                        <p>might have to figure out how to flash my own firmware or just make another big revision with a different board altogether. The goal is still making these sound awesome while being easy to build!</p>
+                    `;
+                    break;
+                
+                
                 case 'bluetooth':
                     detailedContent = `
                         <h3>bluetooth concept</h3>
