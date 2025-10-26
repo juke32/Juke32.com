@@ -427,8 +427,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     mediaDisplay.innerHTML = `<img src="${item.src}" class="popup-image" alt="View">`;
                 } else if (item.type === 'video') {
                     mediaDisplay.innerHTML = `
-                        <video class="popup-video" controls>
-                            <source src="${item.src}" type="video/mp4">
+                        <video class="popup-video" controls preload="metadata" playsinline>
+                            <source src="${item.src}" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2">
                             Your browser does not support the video tag.
                         </video>`;
                 }
