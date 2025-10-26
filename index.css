@@ -25,7 +25,8 @@ body {
 }
 
 h1 {
-    font-size: 5vw;
+    /* MINIMUM | PREFERRED | MAXIMUM */
+    font-size: clamp(2rem, 8vh, 8vmax);
     margin: 0;
     cursor: default;
     background: linear-gradient(90deg, #000000 0%, #000000 35%, #bbbbbb 45%, #bbbbbb 55%, #000000 65%, #000000 100%);
@@ -80,14 +81,6 @@ h1 sup a {
     animation: rainbow 10s linear infinite;
 }
 
-@media (max-width: 70vw) {
-    h1 { font-size: 7vw; }
-}
-
-@media (max-width: 45vw) {
-    h1 { font-size: 9vw; }
-}
-
 #particles-js {
     position: fixed;
     width: 100%;
@@ -116,25 +109,6 @@ h1 sup a {
     z-index: 1001;
 }
 
-@media (max-width: 70vw) {
-    #current-track {
-        font-size: 2.5vw;
-    }
-}
-
-@media (max-width: 45vw) {
-    #current-track {
-        font-size: 3.5vw;
-    }
-}
-
-/* Move the track display higher when the screen is taller than it is wide */
-@media (orientation: portrait) {
-    #current-track {
-        bottom: 20vh; /* Move it higher in portrait mode */
-    }
-}
-
 .corner-link {
     position: absolute;
     text-decoration: none;
@@ -142,18 +116,16 @@ h1 sup a {
     cursor: pointer;
     z-index: 1000;
     transition: color 0.3s, font-size 0.3s;
-    font-size: 2vw; /* Base size for larger screens */
-    max-font-size: 2.5vh; /* Maximum font size for larger screens */
+    font-size: clamp(1.2rem, 3.5vh, 7vmax);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 40%; /* Limit width to prevent overlap */
+    max-width: 50%; /* Limit width to prevent overlap */
 }
 
 .corner-link:hover {
     color: rgba(255, 255, 255, 1);
-    font-size: 2.2vw;
-    max-font-size: 2.7vh;
+    font-size: clamp(2rem, 4vh, 8vmax);
 }
 
 .top-left { top: 1vw; left: 1vw; }
@@ -161,45 +133,6 @@ h1 sup a {
 .bottom-left { bottom: 1vw; left: 1vw; }
 .bottom-right { bottom: 1vw; right: 1vw; }
 
-@media (max-width: 70vw) {
-    .corner-link {
-        font-size: 3.5vw;
-        max-font-size: 3vh;
-        max-width: 45%;
-    }
-
-    .corner-link:hover {
-        font-size: 3.7vw;
-        max-font-size: 3.2vh;
-    }
-}
-
-@media (max-width: 45vw) {
-    .corner-link {
-        font-size: 6vw;
-        max-width: 40%;
-    }
-
-    .corner-link:hover {
-        font-size: 3.2vw;
-    }
-
-    .top-left, .top-right {
-        top: 2vw;
-    }
-
-    .bottom-left, .bottom-right {
-        bottom: 2vw;
-    }
-
-    .top-left, .bottom-left {
-        left: 2vw;
-    }
-
-    .top-right, .bottom-right {
-        right: 2vw;
-    }
-}
 
 #about-section {
     display: none;
@@ -242,16 +175,7 @@ h1 sup a {
 
 .close-btn:hover {
     transform: scale(1.5);
-}
-
-@media (max-width: 45vw) {
-    .about-content {
-        padding-top: 10vh; /* Further increase top padding for smaller screens */
-    }
-
-    .close-btn {
-        font-size: 3.5vh; /* Slightly larger for mobile */
-    }
+    color: red
 }
 
 /* Keyframe animations with viewport-relative heights */
