@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         { type: 'image', src: 'assets/models/lapis-v1-compare.jpg' },
                         { type: 'image', src: 'assets/models/lapis-v1-main.jpg' },
                         { type: 'image', src: 'assets/models/lapis-v1-work.jpg' },
-                        { type: 'video', src: 'assets/videos/lapis-v1-demo.mp4' } //doesn't exist yet
+                        //{ type: 'video', src: 'assets/videos/lapis-v1-demo.mp4' }
                     ];
                     break;
 
@@ -424,9 +424,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="popup-content">
                     <span class="close">&times;</span>
                     <div class="media-container">
-                        ${mediaItems.length > 1 ? '<button class="nav-btn prev">&#10094;</button>' : ''}
                         <div class="media-display"></div>
-                        ${mediaItems.length > 1 ? '<button class="nav-btn next">&#10095;</button>' : ''}
+                        ${mediaItems.length > 1 ? `
+                        <div class="nav-btn-container">
+                            <button class="nav-btn prev"><</button>
+                            <button class="nav-btn next">></button>
+                        </div>` : ''}
                     </div>
                     <div class="popup-text">${detailedContent}</div>
                 </div>

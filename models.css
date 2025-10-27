@@ -129,7 +129,6 @@ h1 {
     display: none;
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
@@ -150,12 +149,6 @@ h1 {
     gap: 2vh; /* Space between elements */
     overflow-y: auto;
     padding-right: 1.5vh; /* Add space for scrollbar */
-}
-
-.popup-image {
-    max-width: 100%;
-    max-height: 80vh; /* Increased max-height for larger viewable area */
-    object-fit: contain;
 }
 
 .popup-text {
@@ -207,39 +200,57 @@ h1 {
 }
 
 
-/* Add these new styles to your existing CSS */
+
+
+/* Updated styles for image popup with nav buttons below */
+
 .media-container {
-    position: relative;
-    width: 100%;
     display: flex;
+    flex-direction: column;   /* Stack children vertically */
     align-items: center;
-    justify-content: center;
+    width: 100%;
     gap: 1.5vh;
 }
 
 .media-display {
-    max-width: 90%;
-    max-height: 600vh;
+    width: 100%;             /* Full width container */
+    max-width: 84vh;         /* Match your max image size */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .popup-image, .popup-video {
+    padding-top: 3.6vh;
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 80vh;
     object-fit: contain;
+}
+
+/* New container for the nav buttons below the media */
+.nav-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 2vh;                /* Spacing between buttons */
+    width: 100%;
+    max-width: 300px;        /* Increased max-width to allow buttons side by side */
+    margin-top: 1.5vh;
+    flex-wrap: nowrap;       /* Prevent buttons from wrapping */
 }
 
 .nav-btn {
     background: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;
-    padding: 1.5vh;
+    padding: 1vh 1vh;
     cursor: pointer;
     font-family: 'Minecraftia', sans-serif;
     font-size: 2.5vh;
     transition: background-color 0.3s, transform 0.3s;
+    flex: 1;                 /* Equal width sharing */
+    max-width: 32vw;        /* Reasonable max width */
+    max-height: 8vh;
+    text-align: center;
 }
 
 .nav-btn:hover {
@@ -247,13 +258,8 @@ h1 {
     transform: scale(1.1);
 }
 
-.prev {
-    left: 1vw;
-}
 
-.next {
-    right: 1vw;
-}
+
 
 /* Add these new styles for the rainbow effect */
 @keyframes rainbow {
