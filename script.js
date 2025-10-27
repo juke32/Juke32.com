@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         { type: 'image', src: 'assets/models/ble+pig_stain.jpg'},
                         { type: 'image', src: 'assets/models/bluetooth_ble.jpg' },
                         { type: 'image', src: 'assets/models/bluetooth_table.jpg' },
-                        { type: 'video', src: 'assets/models/bluetooth-tiktok-con.mp4' } // may want to redo/recrop lol
+                        { type: 'video', src: 'assets/models/bluetooth-tiktok-com-squish.mp4' } // may want to redo/recrop lol
                     ];
                     break;
 
