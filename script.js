@@ -1,7 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const h1 = document.querySelector('h1');
+    if (!h1) {
+        console.warn('No <h1> element found. Skipping audio and hover handlers.');
+        return;
+    }
+
     const audio = new Audio('assets/sound/PrettyDecent - Juke.mp3');
     audio.loop = true;
+    audio.muted = true; 
+    // Try autoplay muted immediately (allowed by browsers)
+    audio.play().catch(() => {
+        // Ignored if autoplay fails (normal on some browsers)
+    });
 
     const particlesConfig = {
         particles: {
@@ -35,7 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     h1.addEventListener('mouseenter', () => {
         h1.classList.add('hovered');
         toggleParticles(10);
-        audio.play();
+        if (audio.paused) {
+            audio.muted = false; // Unmute on enter
+            audio.play().catch(e => console.warn('Audio play error:', e));
+        }
         updateCurrentTrack('PrettyDecent - Juke.mp3');
     });
 
@@ -43,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         h1.classList.remove('hovered');
         toggleParticles(2);
         audio.pause();
+        audio.muted = true; // Mute on leave
         updateCurrentTrack(null);
     });
 

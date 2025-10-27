@@ -92,12 +92,12 @@ h1 sup a {
 
 #current-track {
     position: fixed;
-    bottom: 2vh; /* Keep it at the bottom for landscape and wider screens */
+    bottom: 16vh;           /* 32% of viewport height from bottom */
     left: 50%;
     transform: translateX(-50%);
-    color: #fff;
+    color: #c2c2c2;
     padding: 0.5vw 1vw;
-    font-size: 1.5vw;
+    font-size: clamp(1.2rem, 3.5vh, 7vmax);
     opacity: 0;
     transition: opacity 0.32s ease-in, opacity 1.2s ease-out;
     pointer-events: none;
@@ -105,9 +105,10 @@ h1 sup a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 80vw;
+    max-height: 20vh;
     z-index: 1001;
 }
+
 
 .corner-link {
     position: absolute;
