@@ -303,6 +303,7 @@ body.rainbow h1 {
     max-width: 36%;
     color: rgba(255, 255, 255, 0.32);
     font-family: var(--current-font);
+    text-shadow: #1a1a1a 0.1vh 0.1vh 0.2vh;
 }
 
 .corner-link:hover {
