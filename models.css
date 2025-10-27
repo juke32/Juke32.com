@@ -50,11 +50,9 @@ body {
     overflow-x: hidden;  /* Prevent horizontal scrolling */
 }
 
-/* Fixed header styles */
 h1 {
     position: fixed;
     top: 0;
-    width: 100%;
     text-align: center;
     font-size: clamp(1.2rem, 6vw, 8rem);
     color: white;
@@ -64,8 +62,9 @@ h1 {
     z-index: 999;  /* Keep header above other content */
     user-select: none;
     transform: none !important;
-    text-shadow: 0.2vw 0.2vw 0.4vw rgba(0, 0, 0, 0.5);  /* Add subtle shadow */
+    text-shadow: 0.2vw 0.2vw 0.4vw rgba(0, 0, 0, 0.5);
 }
+
 
 /* Content container - centers content and provides max-width */
 .scroll-container {
