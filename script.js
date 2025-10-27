@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         { type: 'image', src: 'assets/models/ble+pig_stain.jpg'},
                         { type: 'image', src: 'assets/models/bluetooth_ble.jpg' },
                         { type: 'image', src: 'assets/models/bluetooth_table.jpg' },
-                        { type: 'video', src: 'assets/models/bluetooth-tiktok-com-squish.mp4' } // may want to redo/recrop lol
+                        { type: 'video', src: 'assets/models/bluetooth-tiktok-compressed.webm' } // may want to redo/recrop lol
                     ];
                     break;
 
@@ -443,12 +443,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (item.type === 'image') {
                     mediaDisplay.innerHTML = `<img src="${item.src}" class="popup-image" alt="View">`;
                 } else if (item.type === 'video') {
+                    // Derive webm path assuming same filename with .webm extension
+                    const webmSrc = item.src.replace(/\.\w+$/, '.webm');
+
                     mediaDisplay.innerHTML = `
-                        <video class="popup-video" controls preload="metadata" playsinline>
-                            <source src="${item.src}" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2">
-                            Your browser does not support the video tag.
-                        </video>`;
+                    <video class="popup-video" controls preload="metadata" playsinline>
+                        <source src="${item.src}" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2">
+                        <source src="${webmSrc}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>`;
                 }
+            
+
 
                 // Preload next image if it exists
                 if (mediaItems[index + 1] && mediaItems[index + 1].type === 'image') {
@@ -486,8 +492,9 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBtn.addEventListener('click', () => {
                 popup.style.display = 'none';
             });
+            });
         });
-    });
+    
 
     // Close popup when clicking outside
     popup.addEventListener('click', (e) => {
