@@ -56,7 +56,7 @@ h1 {
     top: 0;
     width: 100%;
     text-align: center;
-    font-size: clamp(1.2rem, 4vh, 9rem);
+    font-size: clamp(1.2rem, 6vw, 8rem);
     color: white;
     font-family: var(--current-font);
     margin: 0;
