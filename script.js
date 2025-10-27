@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCurrentTrack(null);
     });
 
-    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight']; // Removed 'b', 'a' for simplicity and firefox compatibility
     let konamiIndex = 0;
 
     const soundMap = {
