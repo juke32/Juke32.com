@@ -20,7 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
             move: { enable: true, speed: 2, direction: "bottom-right", out_mode: "out" },
             line_linked: { enable: true, distance: 300, color: "#b2b2b2", opacity: 0.4, width: 1 },
         },
-        interactivity: { events: { onclick: { enable: true } }, modes: { push: { particles_nb: 1 } } },
+        interactivity: {
+            detect_on: "window",
+            events: { onclick: { enable: true } },
+            modes: { push: { particles_nb: 1 } }
+        },
         retina_detect: true
     };
 
@@ -492,17 +496,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function preloadMediaItems(items) {
         const preloadContainer = document.getElementById('preload-container');
         if (!preloadContainer) return;
-        
+
         // Clear previous preloads
         preloadContainer.innerHTML = '';
-        
+
         items.forEach(item => {
             if (item.type === 'image') {
                 const img = new Image();
                 img.src = item.src;
                 // Add to preload container to ensure it's in the DOM and starts loading
                 preloadContainer.appendChild(img);
-                
+
                 // Use decode() to ensure it's decompressed and ready in memory
                 if ('decode' in img) {
                     img.decode().catch(err => console.warn('Image decode failed:', err));
@@ -522,17 +526,17 @@ document.addEventListener('DOMContentLoaded', () => {
         isGalacticFontActive = !isGalacticFontActive;  // Toggle the state
 
         if (isGalacticFontActive) {
-            // Switch main text to Galactic
-            document.documentElement.style.setProperty('--current-font', 'GalacticAlphabet, sans-serif');
+            // Switch main text to Galactic with Minecraftia as fallback for numbers
+            document.documentElement.style.setProperty('--current-font', "'GalacticAlphabet', 'Minecraftia', sans-serif");
             // Switch button text to Minecraftia (the opposite)
-            document.documentElement.style.setProperty('--opposite-font', 'Minecraftia, sans-serif');
-            toggleFontButton.textContent = 'sga';  // Show 'sga' in Minecraftia font
+            document.documentElement.style.setProperty('--opposite-font', "'Minecraftia', sans-serif");
+            toggleFontButton.innerText = 'sga';
         } else {
-            // Switch main text back to Minecraftia
-            document.documentElement.style.setProperty('--current-font', 'Minecraftia, sans-serif');
+            // Switch main text back to standard Monocraft
+            document.documentElement.style.setProperty('--current-font', "'Minecraftia', sans-serif");
             // Switch button text to Galactic (the opposite)
-            document.documentElement.style.setProperty('--opposite-font', 'GalacticAlphabet, sans-serif');
-            toggleFontButton.textContent = 'sga';  // Show 'sga' in Galactic font
+            document.documentElement.style.setProperty('--opposite-font', "'GalacticAlphabet', 'Minecraftia', sans-serif");
+            toggleFontButton.innerText = 'sga';
         }
     });
 });
