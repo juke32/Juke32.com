@@ -250,9 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     mediaItems = [{ type: 'image', src: box.querySelector('img').src }];
             }
 
-            // Preload all media items when popup opens
-            preloadMediaItems(mediaItems);
-
             // Add detailed text content for each model
             let detailedContent;
             switch (box.querySelector('img').alt) {
@@ -445,15 +442,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         Your browser does not support the video tag.
                     </video>`;
                 }
-
-
-
-                // Preload next image if it exists
-                if (mediaItems[index + 1] && mediaItems[index + 1].type === 'image') {
-                    const preloadImage = new Image();
-                    preloadImage.src = mediaItems[index + 1].src;
-                }
             }
+
+            // Preload all images in the set by ensuring they're in the #preload-container
+            // This forces the browser to load and decode them in the background
+            preloadMediaItems(mediaItems);
 
             // Initial media display
             showMedia(currentIndex);
@@ -497,10 +490,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add preload function for all media items
     function preloadMediaItems(items) {
+        const preloadContainer = document.getElementById('preload-container');
+        if (!preloadContainer) return;
+        
+        // Clear previous preloads
+        preloadContainer.innerHTML = '';
+        
         items.forEach(item => {
             if (item.type === 'image') {
                 const img = new Image();
                 img.src = item.src;
+                // Add to preload container to ensure it's in the DOM and starts loading
+                preloadContainer.appendChild(img);
+                
+                // Use decode() to ensure it's decompressed and ready in memory
+                if ('decode' in img) {
+                    img.decode().catch(err => console.warn('Image decode failed:', err));
+                }
             }
         });
     }
