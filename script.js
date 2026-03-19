@@ -5,13 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const audio = new Audio('assets/sound/PrettyDecent - Juke.mp3');
-    audio.loop = true;
-    audio.muted = true; 
-    // Try autoplay muted immediately (allowed by browsers)
-    audio.play().catch(() => {
-        // Ignored if autoplay fails (normal on some browsers)
-    });
+    // Simple HTMLAudioElement — works on file:// and HTTP alike.
+    // mouseenter is a user gesture; play() on hover is allowed.
+    const audio = document.getElementById('bg-audio');
 
     const particlesConfig = {
         particles: {
@@ -45,10 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     h1.addEventListener('mouseenter', () => {
         h1.classList.add('hovered');
         toggleParticles(10);
-        if (audio.paused) {
-            audio.muted = false; // Unmute on enter
-            audio.play().catch(e => console.warn('Audio play error:', e));
-        }
+        audio.play().catch(e => console.log('Playback blocked:', e));
         updateCurrentTrack('PrettyDecent - Juke.mp3');
     });
 
@@ -56,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         h1.classList.remove('hovered');
         toggleParticles(2);
         audio.pause();
-        audio.muted = true; // Mute on leave
         updateCurrentTrack(null);
     });
 
@@ -106,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function throttle(func, limit) {
         let lastFunc;
         let lastRan;
-        return function() {
+        return function () {
             const context = this;
             const args = arguments;
             if (!lastRan) {
@@ -114,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 lastRan = Date.now();
             } else {
                 clearTimeout(lastFunc);
-                lastFunc = setTimeout(function() {
+                lastFunc = setTimeout(function () {
                     if ((Date.now() - lastRan) >= limit) {
                         func.apply(context, args);
                         lastRan = Date.now();
@@ -136,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCurrentTrack(trackName) {
         const trackElement = document.getElementById('current-track');
         const trackNameElement = document.getElementById('track-name');
-        
+
         clearTimeout(trackDisplayTimeout);
         if (trackName) {
             trackNameElement.textContent = trackName.replace(/\.(wav|mp3)$/, '');
@@ -170,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollTop = 0;
 
     // Handle header scroll
-    document.querySelector('.scroll-container').addEventListener('scroll', (e) => {
+    document.querySelector('.scroll-container')?.addEventListener('scroll', (e) => {
         const scrollTop = e.target.scrollTop;
         if (scrollTop > lastScrollTop && scrollTop > 50) {
             // Scrolling down
@@ -207,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     mediaItems = [
                         { type: 'image', src: 'assets/models/bluetooth.jpg' },
                         { type: 'image', src: 'assets/models/bluetooth_internal.jpg' },
-                        { type: 'image', src: 'assets/models/ble+pig_stain.jpg'},
+                        { type: 'image', src: 'assets/models/ble+pig_stain.jpg' },
                         { type: 'image', src: 'assets/models/bluetooth_ble.jpg' },
                         { type: 'image', src: 'assets/models/bluetooth_table.jpg' },
                         { type: 'video', src: 'assets/models/bluetooth-tiktok-compressed.webm' } // may want to redo/recrop lol
@@ -253,18 +245,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         { type: 'image', src: 'assets/models/ben_chunky.jpg' }
                     ];
                     break;
-                
+
                 default:
                     mediaItems = [{ type: 'image', src: box.querySelector('img').src }];
             }
-            
+
             // Preload all media items when popup opens
             preloadMediaItems(mediaItems);
 
             // Add detailed text content for each model
             let detailedContent;
             switch (box.querySelector('img').alt) {
-                
+
                 case 'lapis-v1':
                     detailedContent = `
                         <h3>lapis v1</h3>
@@ -293,8 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>might have to figure out how to flash my own firmware or just make another big revision with a different board altogether. The goal is still making these sound awesome while being easy to build!</p>
                     `;
                     break;
-                
-                
+
+
                 case 'bluetooth':
                     detailedContent = `
                         <h3>bluetooth concept</h3>
@@ -437,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let currentIndex = 0;
             const mediaDisplay = popup.querySelector('.media-display');
-            
+
             function showMedia(index) {
                 const item = mediaItems[index];
                 if (item.type === 'image') {
@@ -453,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         Your browser does not support the video tag.
                     </video>`;
                 }
-            
+
 
 
                 // Preload next image if it exists
@@ -492,12 +484,12 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBtn.addEventListener('click', () => {
                 popup.style.display = 'none';
             });
-            });
         });
-    
+    });
+
 
     // Close popup when clicking outside
-    popup.addEventListener('click', (e) => {
+    popup?.addEventListener('click', (e) => {
         if (e.target === popup) {
             popup.style.display = 'none';
         }

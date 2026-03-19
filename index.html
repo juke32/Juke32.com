@@ -11,6 +11,9 @@
 </head>
 <body>
     <!--NEW IMPROVED CODE   -->
+    <audio id="bg-audio" preload="auto" loop>
+        <source src="assets/sound/PrettyDecent - Juke.mp3" type="audio/mpeg">
+    </audio>
     <div id="particles-js"></div>
     <div class="container">
         <h1>juke<sup><a href="models.html" id="superscript-link" rel="noopener noreferrer">
@@ -43,6 +46,7 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // ---- about section ----
             const aboutLink = document.getElementById('about-link');
             const aboutSection = document.getElementById('about-section');
             const closeBtn = document.querySelector('.close-btn');
