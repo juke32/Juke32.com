@@ -1,7 +1,7 @@
 /* Font definitions for the site */
 @font-face {
     font-family: 'Minecraftia';
-    src: url('assets/fonts/Minecraft.otf') format('opentype'),
+    src: url('assets/fonts/Monocraft.otf') format('opentype'),
          url('assets/fonts/Monocraft.ttf') format('truetype');
     font-display: swap;
 }
