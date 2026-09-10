@@ -1,0 +1,72 @@
+{
+  "slug": "dirt",
+  "title": "dirt",
+  "tagline": "dirt - a basic mp3 player",
+  "hover_text": "dirt - a juke32 mp3 player",
+  "meta_description": "Dirt is the first marketable juke32 mp3 player, featuring a simple control disc, USB-C, 3.5mm output, and a micro SD card slot.",
+  "thumbnail": "dirt_mp3.jpg",
+  "sort_order": 5,
+  "sections": [
+    {
+      "heading": "dirt : a juke32 mp3 player",
+      "type": "text",
+      "content": "The first model given a name for being marketable."
+    },
+    {
+      "heading": "features",
+      "type": "list",
+      "items": [
+        "Simple control disc for power, volume, and track selection",
+        "USB-c power input",
+        "3.5mm headphone output",
+        "FAT32 micro sdcard slot"
+      ]
+    },
+    {
+      "heading": "why not dirt?",
+      "type": "list",
+      "items": [
+        "SD cards are too expensive to buy in bulk (do not buy cheap micro sd cards, they die very quickly)",
+        "Too many wires to strip and solder",
+        "No mechanical design could reliably control power, volume, and track selection",
+        "No indicator to differentiate between the box being off vs. idle",
+        "Uses too much power on idle",
+        "No room for battery / unsafe where I could put it (unless I change dimensions)",
+        "Natural differences in wood and switch thickness"
+      ]
+    },
+    {
+      "heading": "notes",
+      "type": "text",
+      "content": "The control disc was a great concept but proved difficult to implement due to not finding low-travel small latching switches. The varying dimensions of stuff I did buy also made designing challenging."
+    },
+    {
+      "heading": "",
+      "type": "text",
+      "content": "The project devolved into rapid iteration (guessing and checking). Having to engrave/cut 3 different thicknesses of wood just to make my design work. (no 3d printer to make this easier) The process was tedious and there were too many unknowns to account for."
+    },
+    {
+      "heading": "",
+      "type": "text",
+      "content": "Why couldn't I just buy some board that already has a switch and battery management circuit? I did just that with Lapis"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "dirt_mp3.jpg"
+    },
+    {
+      "type": "image",
+      "src": "dirt_meets_steve.jpg"
+    },
+    {
+      "type": "image",
+      "src": "dirt_stain.jpg"
+    },
+    {
+      "type": "image",
+      "src": "dirt_naked.jpg"
+    }
+  ]
+}

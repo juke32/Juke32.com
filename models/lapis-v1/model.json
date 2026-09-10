@@ -1,0 +1,77 @@
+{
+  "slug": "lapis-v1",
+  "title": "lapis v1",
+  "tagline": "mono/stereo bluetooth speakers",
+  "hover_text": "click to the first iteration of 'lapis'",
+  "meta_description": "The first iteration of the lapis bluetooth speaker. Features Bluetooth 5.4, USB-C PD, stereo pairing, and a 6-hour battery life.",
+  "thumbnail": "lapis-v1-initial.jpg",
+  "sort_order": 7,
+  "sections": [
+    {
+      "heading": "lapis v1",
+      "type": "text",
+      "content": "soooooooooooooo close"
+    },
+    {
+      "heading": "features",
+      "type": "list",
+      "items": [
+        "Bluetooth 5.4",
+        "One large Speaker Driver (I had to dremel the aux port on every board to even make it fit lol)",
+        "400mah - 6 hour battery life at moderate volume (calculated)",
+        "USB-C PD supported charging port",
+        "3.5mm auxiliary input (sadly only input)",
+        "Stereo pairing capability when you buy 2. They will connect and play bluetooth in stereo :3"
+      ]
+    },
+    {
+      "heading": "the not-so-great stuff",
+      "type": "text",
+      "content": "I iterated this to be the best quality speaker, while being easy to make and financially viable......... but nothing is perfect"
+    },
+    {
+      "heading": "",
+      "type": "list",
+      "items": [
+        "something with the master/slave stereo mode makes them get corrupted when more are on at one time",
+        "no response from the board seller of these (DAU / BenLi Audio) about their firmware issues",
+        "I found who makes the bluetooth chips but no firmware to be found"
+      ]
+    },
+    {
+      "heading": "what's next",
+      "type": "text",
+      "content": "might have to figure out how to flash my own firmware or just make another big revision with a different board altogether. The goal is still making these sound awesome while being easy to build!"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "lapis-v1-initial.jpg"
+    },
+    {
+      "type": "image",
+      "src": "lapis-v1-mainn.jpg"
+    },
+    {
+      "type": "image",
+      "src": "lapis-v1-back.jpg"
+    },
+    {
+      "type": "image",
+      "src": "lapis-v1-internal.jpg"
+    },
+    {
+      "type": "image",
+      "src": "lapis-v1-compare.jpg"
+    },
+    {
+      "type": "image",
+      "src": "lapis-v1-main.jpg"
+    },
+    {
+      "type": "image",
+      "src": "lapis-v1-work.jpg"
+    }
+  ]
+}

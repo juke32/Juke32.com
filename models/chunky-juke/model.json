@@ -1,0 +1,47 @@
+{
+  "slug": "chunky-juke",
+  "title": "mini chunky jukebox",
+  "tagline": "custom 12px jukebox design with enlarged border to make a chunky box",
+  "hover_text": "click to view my lil guys",
+  "meta_description": "Mini chunky jukebox features a custom 12px enlarged border design printed with amazing 0.0007in precision on a calibrated laser engraver.",
+  "thumbnail": "minichunkyjuke.jpg",
+  "sort_order": 4,
+  "sections": [
+    {
+      "heading": "mini chunky jukebox",
+      "type": "text",
+      "content": "Using the chunky model and a newly calibrated laser engraver I used the thinnest wood I had and printed a few lilguys."
+    },
+    {
+      "heading": "design features",
+      "type": "list",
+      "items": [
+        "Custom 12px enlarged border design",
+        "Double wide border",
+        "Enhanced visual presence",
+        "Maintains Minecrafy Look and Aesthetic",
+        "Amazing 0.0007in Precision",
+        "so cool"
+      ]
+    },
+    {
+      "heading": "notes",
+      "type": "text",
+      "content": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm small chunky jukebox"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "minichunkyjuke.jpg"
+    },
+    {
+      "type": "image",
+      "src": "tiny juke32.png"
+    },
+    {
+      "type": "image",
+      "src": "chunkychunk.jpg"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "slug": "first-try",
+  "title": "initial prototypes",
+  "tagline": "first trial - first 2 boxes created",
+  "hover_text": "click to view my first attemptive print",
+  "meta_description": "The initial prototype boxes that started the entire juke32 project. Check out the design process from MS Paint concept to Lightburn adjustments.",
+  "thumbnail": "ben_chunky.jpg",
+  "sort_order": 1,
+  "sections": [
+    {
+      "heading": "initial prototypes",
+      "type": "text",
+      "content": "The first experimental boxes that started the entire project."
+    },
+    {
+      "heading": "design process",
+      "type": "list",
+      "items": [
+        "MS Paint concept",
+        "Inkscape design with interlocking edges",
+        "Lightburn adjustments and text additions"
+      ]
+    },
+    {
+      "heading": "lessons learned",
+      "type": "text",
+      "content": "These initial attempts provided valuable insights into design constraints and design improvements."
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "first try.jpg"
+    },
+    {
+      "type": "image",
+      "src": "ben_chunky.jpg"
+    }
+  ]
+}

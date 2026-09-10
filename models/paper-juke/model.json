@@ -1,0 +1,35 @@
+{
+  "slug": "paper-juke",
+  "title": "14px paper jukebox",
+  "tagline": "changed the 16px texture to 14px to test looks",
+  "hover_text": "click to view my paper project!",
+  "meta_description": "The 14px paper jukebox is an experiment using 14px textures instead of the 16px default Minecraft texture to allow for larger thickness wood.",
+  "thumbnail": "paperjuke.jpg",
+  "sort_order": 2,
+  "sections": [
+    {
+      "heading": "14px paper jukebox",
+      "type": "text",
+      "content": "An experiment using 14px textures instead of the 16px default Minecraft texture."
+    },
+    {
+      "heading": "the idea",
+      "type": "text",
+      "content": "Changing the texture resolution is unique and makes the border larger allowing for larger thickness wood to be used for a similar sized wooden box."
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "paperjuke.jpg"
+    },
+    {
+      "type": "image",
+      "src": "paperjukebox.jpg"
+    },
+    {
+      "type": "image",
+      "src": "14px mini jukebox cutout (enlarged).png"
+    }
+  ]
+}

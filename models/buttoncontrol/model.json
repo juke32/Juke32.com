@@ -1,0 +1,44 @@
+{
+  "slug": "buttoncontrol",
+  "title": "button control prototype",
+  "tagline": "testing mp3 player with simple button control",
+  "hover_text": "click to view my working mp3 prototype",
+  "meta_description": "The working button control mp3 prototype jukebox featuring switches, combined volume/track select functions, and a 9v rechargeable Lipo battery.",
+  "thumbnail": "buttoncontroljuke.jpg",
+  "sort_order": 3,
+  "sections": [
+    {
+      "heading": "button control prototype",
+      "type": "text",
+      "content": "I really just wanted to have a working jukebox, so I built this."
+    },
+    {
+      "heading": "features",
+      "type": "list",
+      "items": [
+        "Switches",
+        "Combined Volume and Track Select Sunctions",
+        "9v rechargable Lipo Battery"
+      ]
+    },
+    {
+      "heading": "notes",
+      "type": "text",
+      "content": "Due to the 3.7v Lithium Ion battery being boosted to 9v and then immediately bucked down to 5v... The battery life is only 1.5-3 hours. And the mp3 module I used has a terrible stand-by current draw."
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "buttoncontroljuke.jpg"
+    },
+    {
+      "type": "image",
+      "src": "buttoncontrolchunky.jpg"
+    },
+    {
+      "type": "image",
+      "src": "buttoncontrolproto.jpg"
+    }
+  ]
+}

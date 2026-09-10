@@ -1,0 +1,70 @@
+{
+  "slug": "bluetooth",
+  "title": "bluetooth concept",
+  "tagline": "mono/stereo bluetooth speakers",
+  "hover_text": "click to view my beta model : bluetooth",
+  "meta_description": "The bluetooth concept jukebox iteration featuring Bluetooth 5.4, a full range speaker driver, USB-C PD, stereo pairing, and long battery life.",
+  "thumbnail": "bluetooth.jpg",
+  "sort_order": 6,
+  "sections": [
+    {
+      "heading": "bluetooth concept",
+      "type": "text",
+      "content": "The cheapest, easiest, best feeling, smallest, longest lasting (that's what she said) jukebox iteration."
+    },
+    {
+      "heading": "features",
+      "type": "list",
+      "items": [
+        "Bluetooth 5.4",
+        "One Full Range Speaker Driver",
+        "400mah - 6 hour battery life at moderate volume (calculated)",
+        "150mah - 2-3 hour battery life at moderate volume (tested on initial prototypes)",
+        "USB-C PD supported charging port (if I solder the 5.1k resistors)",
+        "3.5mm auxiliary input (sadly only input)",
+        "Stereo pairing capability when you buy 2. They will connect and play bluetooth in stereo :3"
+      ]
+    },
+    {
+      "heading": "notes",
+      "type": "text",
+      "content": "I may iterate more to make this model a better product, but the main focus is to make a disc controlled jukebox."
+    },
+    {
+      "heading": "more notes",
+      "type": "text",
+      "content": "Though each box costs under $10 in electronics and requires soldering only 4 wires, this project is no cakewalk. It also requires 2 small resistors that I shouldn't be legally allowed to hand solder."
+    },
+    {
+      "heading": "",
+      "type": "text",
+      "content": "The 0402 resistors are 0.04 inches long and 0.02 inches wide. Picture the tiniest ant you've ever seen scurrying across your desk - that's probably bigger than one of these resistors."
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "bluetooth.jpg"
+    },
+    {
+      "type": "image",
+      "src": "bluetooth_internal.jpg"
+    },
+    {
+      "type": "image",
+      "src": "ble+pig_stain.jpg"
+    },
+    {
+      "type": "image",
+      "src": "bluetooth_ble.jpg"
+    },
+    {
+      "type": "image",
+      "src": "bluetooth_table.jpg"
+    },
+    {
+      "type": "video",
+      "src": "bluetooth-tiktok-compressed.webm"
+    }
+  ]
+}

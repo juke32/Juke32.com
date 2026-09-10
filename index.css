@@ -27,30 +27,47 @@ body {
 }
 
 h1 {
-    /* MINIMUM | PREFERRED | MAXIMUM */
     font-size: clamp(2rem, 8vh, 8vmax);
     margin: 0;
     cursor: default;
-    background: linear-gradient(90deg, #000000 0%, #000000 35%, #bbbbbb 45%, #bbbbbb 55%, #000000 65%, #000000 100%);
-    background-size: 200% auto;
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        #000000 15%,
+        rgba(255, 255, 255, 0.12) 30%,
+        rgba(255, 255, 255, 0.65) 40%,
+        rgba(255, 255, 255, 0.85) 45%,
+        rgba(255, 255, 255, 0.85) 55%,
+        rgba(255, 255, 255, 0.65) 60%,
+        rgba(255, 255, 255, 0.12) 70%,
+        #000000 85%,
+        #000000 100%
+    );
+    background-size: 250% auto;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: shimmer 10s linear infinite;
-    transition: filter 0.3s ease, transform 0.3s ease;
+    animation: shimmer 13s linear infinite;
+    transition: filter 0.15s ease, transform 0.15s ease;
     filter: blur(0.3vh);
     transform: scale(1);
+    display: inline-block;
 }
 
 h1:hover {
     filter: blur(0);
     transform: scale(1.1);
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
     color: #ffffff;
 }
 
 h1 sup {
-    font-size: 0.6em;
-    vertical-align: top;
+    font-size: 0.55em;
+    vertical-align: 0.65em;
+    line-height: 0;
+    margin-left: 0.05em;
 }
 
 h1 sup a {
@@ -64,8 +81,8 @@ h1 sup a {
 }
 
 @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% { background-position: -250% 0; }
+    100% { background-position: 250% 0; }
 }
 
 @keyframes rainbow {
@@ -181,52 +198,63 @@ h1 sup a {
     color: red
 }
 
-/* Keyframe animations with viewport-relative heights */
-@keyframes bounce3 {
-    0%, 15% { transform: translateY(0); }        /* Start position */
-    15%, 25% { transform: translateY(-2vh); }    /* Slower rise (using 2% of viewport height) */
-    25%, 35% { transform: translateY(-2vh); }    /* Hold at top */
-    35%, 45% { transform: translateY(0); }       /* Slower fall */
-    45%, 100% { transform: translateY(0); }      /* Long pause at bottom */
+/* Entrance rise keyframes (slower rise up to elevated height) */
+@keyframes bounce3-enter {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-2vh); }
 }
 
-@keyframes bounce2 {
-    0%, 25% { transform: translateY(0); }        /* Start position */
-    25%, 35% { transform: translateY(-2vh); }    /* Slower rise */
-    35%, 45% { transform: translateY(-2vh); }    /* Hold at top */
-    45%, 55% { transform: translateY(0); }       /* Slower fall */
-    55%, 100% { transform: translateY(0); }      /* Long pause at bottom */
+@keyframes bounce2-enter {
+    0%, 30% { transform: translateY(0); }
+    100%    { transform: translateY(-2vh); }
 }
 
-/* Animation triggers on h1 hover */
+/* Floating loop keyframes (dips further down towards -0.7vh) */
+@keyframes float3 {
+    0%, 100% { transform: translateY(-2vh); }
+    50%      { transform: translateY(-0.7vh); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translateY(-2vh); }
+    50%      { transform: translateY(-0.7vh); }
+}
+
+/* Hover triggers: entrance rise -> float loop */
 h1:hover #superscript-link .digit-3 {
-    animation: 
-        bounce3                                
-        6s                                     /* 6 second duration */
-        cubic-bezier(0.4, 0.1, 0.3, 1)        /* Smooth easing */
-        infinite;                              
+    animation:
+        bounce3-enter 0.75s cubic-bezier(0.33, 1, 0.68, 1) forwards,
+        float3 4.2s ease-in-out 0.75s infinite;
 }
 
 h1:hover #superscript-link .digit-2 {
-    animation: 
-        bounce2                                
-        6s                                     
-        cubic-bezier(0.4, 0.1, 0.3, 1)        
-        infinite;                              
+    animation:
+        bounce2-enter 1.0s cubic-bezier(0.33, 1, 0.68, 1) forwards,
+        float2 4.2s ease-in-out 1.0s infinite;
 }
 
 #superscript-link {
-    display: inline-block;
+    color: inherit;
+    text-decoration: none;
 }
 
 #superscript-link .digit {
     display: inline-block;
-    transition: transform 0.3s;
+    color: inherit;
+    background: inherit;
+    -webkit-background-clip: inherit;
+    background-clip: inherit;
 }
 
-/* Cubic-bezier explanation:
-    0.34 - Start speed (slower start)
-    1.56 - First control point (creates high arc)
-    0.64 - Second control point (controls descent)
-    1    - End speed (smooth finish)
-*/
+/* Media query for portrait/narrow devices (aspect ratio smaller than 1/1 square or max-width 768px) */
+@media screen and (max-aspect-ratio: 1/1), screen and (max-width: 768px) {
+    .container {
+        transform: translateY(-8vh);
+    }
+
+    #current-track {
+        font-size: clamp(0.8rem, 2.2vh, 4vmax);
+        bottom: 3.5vh;
+        max-width: 85vw;
+    }
+}

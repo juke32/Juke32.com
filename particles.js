@@ -771,8 +771,8 @@ var pJS = function(tag_id, params){
           pJS.particles.color,
           pJS.particles.opacity.value,
           {
-            'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
-            'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
+            'x': (pos && pos.pos_x != null) ? pos.pos_x : Math.random() * pJS.canvas.w,
+            'y': (pos && pos.pos_y != null) ? pos.pos_y : Math.random() * pJS.canvas.h
           }
         )
       )
@@ -1118,11 +1118,41 @@ var pJS = function(tag_id, params){
 
     }
 
+    /* el on touchstart/touchmove — mirrors mousemove for touch devices (iPad fix) */
+    var touchHandler = function(e){
+      if(!e.touches || e.touches.length === 0) return;
+      var touch = e.touches[0];
+      var pos_x = touch.clientX;
+      var pos_y = touch.clientY;
+
+      if(pJS.tmp.retina){
+        pos_x *= pJS.canvas.pxratio;
+        pos_y *= pJS.canvas.pxratio;
+      }
+
+      pJS.interactivity.mouse.pos_x = pos_x;
+      pJS.interactivity.mouse.pos_y = pos_y;
+      pJS.interactivity.status = 'mousemove';
+    };
+    pJS.interactivity.el.addEventListener('touchstart', touchHandler, {passive: true});
+    pJS.interactivity.el.addEventListener('touchmove', touchHandler, {passive: true});
+
     /* on click event */
     if(pJS.interactivity.events.onclick.enable){
 
-      pJS.interactivity.el.addEventListener('click', function(){
+      pJS.interactivity.el.addEventListener('click', function(e){
 
+        // Read coordinates from click event directly (fixes iPad/touch devices)
+        if(e && e.clientX != null){
+          var click_x = e.clientX,
+              click_y = e.clientY;
+          if(pJS.tmp.retina){
+            click_x *= pJS.canvas.pxratio;
+            click_y *= pJS.canvas.pxratio;
+          }
+          pJS.interactivity.mouse.pos_x = click_x;
+          pJS.interactivity.mouse.pos_y = click_y;
+        }
         pJS.interactivity.mouse.click_pos_x = pJS.interactivity.mouse.pos_x;
         pJS.interactivity.mouse.click_pos_y = pJS.interactivity.mouse.pos_y;
         pJS.interactivity.mouse.click_time = new Date().getTime();
