@@ -119,7 +119,7 @@ MODEL_PAGE_TEMPLATE = r"""%%GENERATED_COMMENT%%
     <link rel="preload" href="/assets/fonts/minecraft-sga.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="../../models.css">
     <script src="../../particles.js"></script>
-    <script src="../../script.js" defer></script>
+    <script src="../../script.js"></script>
     <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" sizes="32x32" href="/assets/images/favicon-32x32.png" type="image/png">
     <link rel="icon" sizes="64x64" href="/assets/images/favicon-64x64.png" type="image/png">
@@ -147,7 +147,7 @@ MODEL_PAGE_TEMPLATE = r"""%%GENERATED_COMMENT%%
     </div>
 
     <div id="preload-container" style="display: none;"></div>
-    <audio id="bg-audio" src="/assets/sound/PrettyDecent - Juke.mp3" loop></audio>
+    <audio id="bg-audio" src="../../assets/sound/PrettyDecent - Juke.mp3" loop></audio>
     <div id="current-track"><span id="track-name"></span></div>
 
     <script>
@@ -245,7 +245,7 @@ MODELS_GRID_TEMPLATE = r"""%%GENERATED_COMMENT%%
     <link rel="preload" href="assets/fonts/minecraft-sga.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="models.css">
     <script src="particles.js"></script>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" sizes="32x32" href="assets/images/favicon-32x32.png" type="image/png">
     <link rel="icon" sizes="64x64" href="assets/images/favicon-64x64.png" type="image/png">

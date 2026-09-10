@@ -1,20 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
     const h1 = document.querySelector('h1');
-    if (!h1) {
-        console.warn('No <h1> element found. Skipping audio and hover handlers.');
-        return;
+    if (h1) {
+        h1.addEventListener('mouseenter', () => {
+            h1.classList.add('hovered');
+            toggleParticles(10);
+            if (audio) {
+                audio.play().catch(e => console.log('Playback blocked:', e));
+            }
+            updateCurrentTrack('PrettyDecent - Juke.mp3');
+        });
+
+        h1.addEventListener('mouseleave', () => {
+            h1.classList.remove('hovered');
+            toggleParticles(2);
+            if (audio) {
+                audio.pause();
+            }
+            updateCurrentTrack(null);
+        });
+    }
+
+    const scriptTag = document.querySelector('script[src$="script.js"]');
+    const scriptUrl = scriptTag ? scriptTag.src : window.location.href;
+    const baseUrl = new URL('./', scriptUrl).href;
+    
+    function getAsset(relativePath) {
+        return new URL(relativePath, baseUrl).href;
     }
 
     // Simple HTMLAudioElement — works on file:// and HTTP alike.
     // mouseenter is a user gesture; play() on hover is allowed.
     const audio = document.getElementById('bg-audio');
+    if (audio) {
+        const originalSrc = audio.getAttribute('src');
+        if (originalSrc && originalSrc.includes('assets/sound/')) {
+            const fileName = originalSrc.split('assets/sound/')[1];
+            audio.src = getAsset('assets/sound/' + fileName);
+        }
+    }
 
     const particlesConfig = {
         particles: {
             number: { value: 2 },  // Reduced from 4 to 2 for better performance
             shape: {
                 type: "image",
-                image: { src: "assets/images/favicon-64x64.png", width: 64, height: 64 }
+                image: { src: getAsset("assets/images/favicon-64x64.png"), width: 64, height: 64 }
             },
             size: { value: 20, random: true, anim: { enable: true, speed: 2, size_min: 10, sync: false } },
             move: { enable: true, speed: 2, direction: "bottom-right", out_mode: "out" },
@@ -31,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     particlesJS('particles-js', particlesConfig);
 
     function toggleParticles(speed) {
+        if (!window.pJSDom || !window.pJSDom[0] || !window.pJSDom[0].pJS) return;
         const pJS = window.pJSDom[0].pJS;
         const currentSpeed = pJS.particles.move.speed;
         const speedFactor = speed / currentSpeed;
@@ -42,37 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    h1.addEventListener('mouseenter', () => {
-        h1.classList.add('hovered');
-        toggleParticles(10);
-        audio.play().catch(e => console.log('Playback blocked:', e));
-        updateCurrentTrack('PrettyDecent - Juke.mp3');
-    });
-
-    h1.addEventListener('mouseleave', () => {
-        h1.classList.remove('hovered');
-        toggleParticles(2);
-        audio.pause();
-        updateCurrentTrack(null);
-    });
-
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight']; // Removed 'b', 'a' for simplicity and firefox compatibility
     let konamiIndex = 0;
 
     const soundMap = {
-        'ArrowUp': 'up.wav',
-        'ArrowDown': 'down.wav',
-        'ArrowLeft': 'left.wav',
-        'ArrowRight': 'right.wav',
-        'a': 'a.wav',
-        'b': 'b.wav'
+        'ArrowUp': getAsset('assets/sound/up.wav'),
+        'ArrowDown': getAsset('assets/sound/down.wav'),
+        'ArrowLeft': getAsset('assets/sound/left.wav'),
+        'ArrowRight': getAsset('assets/sound/right.wav'),
+        'a': getAsset('assets/sound/a.wav'),
+        'b': getAsset('assets/sound/b.wav')
     };
 
     document.addEventListener('keydown', (e) => {
         if (e.key === konamiCode[konamiIndex]) {
             const soundFile = soundMap[e.key];
             if (soundFile) {
-                const keySound = new Audio(`assets/sound/${soundFile}`);
+                const keySound = new Audio(soundFile);
                 keySound.play();
             }
 
@@ -87,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function activateRainbowMode() {
-        new Audio('assets/sound/Wilhelm.wav').play();
+        new Audio(getAsset('assets/sound/Wilhelm.wav')).play();
         document.body.classList.add('rainbow');
         setTimeout(() => document.body.classList.remove('rainbow'), 32000);
     }
@@ -96,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'banjo', 'bass', 'bassb', 'bongo', 'bowl', 'bugle', 'chair', 'glass', 'guitar', 'hat',
         'hit', 'kalimba', 'melodian', 'piano', 'pluckp', 'recorder', 'steeldrum',
         'steelguitar', 'vibraphone', 'violin', 'evie'
-    ].map(file => `assets/note/${file}.mp3`);
+    ].map(file => getAsset(`assets/note/${file}.mp3`));
 
     // Throttle function to limit click event frequency
     function throttle(func, limit) {
@@ -515,27 +532,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const toggleFontButton = document.getElementById('toggle-font');
-    let isGalacticFontActive = false;
+    if (toggleFontButton) {
+        let isGalacticFontActive = false;
 
-    // Make the toggle button always show in the opposite font of the current page
-    toggleFontButton.classList.add('opposite-font');
+        // Make the toggle button always show in the opposite font of the current page
+        toggleFontButton.classList.add('opposite-font');
 
-    toggleFontButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        isGalacticFontActive = !isGalacticFontActive;  // Toggle the state
+        toggleFontButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            isGalacticFontActive = !isGalacticFontActive;  // Toggle the state
 
-        if (isGalacticFontActive) {
-            // Switch main text to Galactic with Minecraftia as fallback for numbers
-            document.documentElement.style.setProperty('--current-font', "'GalacticAlphabet', 'Minecraftia', sans-serif");
-            // Switch button text to Minecraftia (the opposite)
-            document.documentElement.style.setProperty('--opposite-font', "'Minecraftia', sans-serif");
-            toggleFontButton.innerText = 'sga';
-        } else {
-            // Switch main text back to standard Monocraft
-            document.documentElement.style.setProperty('--current-font', "'Minecraftia', sans-serif");
-            // Switch button text to Galactic (the opposite)
-            document.documentElement.style.setProperty('--opposite-font', "'GalacticAlphabet', 'Minecraftia', sans-serif");
-            toggleFontButton.innerText = 'sga';
-        }
-    });
+            if (isGalacticFontActive) {
+                // Switch main text to Galactic with Minecraftia as fallback for numbers
+                document.documentElement.style.setProperty('--current-font', "'GalacticAlphabet', 'Minecraftia', sans-serif");
+                // Switch button text to Minecraftia (the opposite)
+                document.documentElement.style.setProperty('--opposite-font', "'Minecraftia', sans-serif");
+                toggleFontButton.innerText = 'sga';
+            } else {
+                // Switch main text back to standard Monocraft
+                document.documentElement.style.setProperty('--current-font', "'Minecraftia', sans-serif");
+                // Switch button text to Galactic (the opposite)
+                document.documentElement.style.setProperty('--opposite-font', "'GalacticAlphabet', 'Minecraftia', sans-serif");
+                toggleFontButton.innerText = 'sga';
+            }
+        });
+    }
 });
