@@ -23,21 +23,18 @@
     <a href="#" class="corner-link top-left" id="about-link">about</a>
     <a href="models.html" class="corner-link top-right">models</a>
     <a href="https://www.youtube.com/@jukebox.32" class="corner-link bottom-left">youtube</a>
-    <a href="https://trello.com/b/abEXFTkS" class="corner-link bottom-right">trello</a>
+    <a href="https://discord.gg/6bJySHXChG" class="corner-link bottom-right">discord</a>
     
     <div id="about-section">
         <span class="close-btn close-left">&times;</span>
         <span class="close-btn close-right">&times;</span>
         <div class="about-content">
-            <h2>I love music & Minecraft</h2>
+            <h2>I love music &amp; Minecraft</h2>
             <p>When I started playing minecraft the jukebox had a different design and I felt like the discs were the most prestigious collectible in the game.</p>
             <p>Just like back then, I am grinding and getting the original music discs. This time in real life.</p>
             <p>As I continue to develop and refine this project, I may consider selling some revisions or limited edition versions of the jukebox.</p>
             <p>If you're interested, or want to collaborate, please don't hesitate to reach out!</p>
-            <!-- <p>I am certainly not the first to bring a minecraft jukebox to life. Feel free to contact me:</p> -->
             <p><strong>Discord:</strong> juke32.com</p>
-            
-
         </div>
     </div>
     
@@ -48,15 +45,17 @@
             // ---- about section ----
             const aboutLink = document.getElementById('about-link');
             const aboutSection = document.getElementById('about-section');
-            const closeBtn = document.querySelector('.close-btn');
+            const closeBtns = document.querySelectorAll('.close-btn');
             
             aboutLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 aboutSection.classList.add('active');
             });
             
-            closeBtn.addEventListener('click', () => {
-                aboutSection.classList.remove('active');
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    aboutSection.classList.remove('active');
+                });
             });
         });
     </script>

@@ -10,8 +10,14 @@ GPS, camera, location, and device metadata across all past Git commits.
 import sys
 import subprocess
 import shutil
+import os
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent if SCRIPT_DIR.name == "scripts" else SCRIPT_DIR
 
 def main():
+    os.chdir(REPO_ROOT)
     if not shutil.which("git-filter-repo"):
         print("Error: git-filter-repo is required.")
         sys.exit(1)

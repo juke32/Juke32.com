@@ -172,30 +172,38 @@ h1 sup a {
 }
 
 .about-content {
-    max-width: 80%;
+    max-width: 64ch;
     padding: 8vh 2vh 5vh; /* Increased top padding for mobile */
     margin: 0 auto; /* Center the content */
     text-align: center;
+    line-height: 1.6;
 }
 
 .close-btn {
-    position: fixed; /* Changed from absolute to fixed */
-    top: 1vh;
-    right: 1vh;
-    font-size: 2.5vh;
+    position: fixed;
+    top: 2vh;
+    font-size: 5vh; /* Larger X's */
     cursor: pointer;
     transition: transform 0.3s ease;
     background: none;
     border: none;
     color: white;
-    padding: 1vh; /* Increased padding for better touch target */
+    padding: 1vh 2vh;
     font-family: 'Minecraftia', sans-serif;
-    z-index: 2001; /* Ensure it's above the content */
+    z-index: 2001;
+}
+
+.close-left {
+    left: 2vw;
+}
+
+.close-right {
+    right: 2vw;
 }
 
 .close-btn:hover {
-    transform: scale(1.5);
-    color: red
+    transform: scale(1.4);
+    color: #ff4444;
 }
 
 /* Entrance rise keyframes (slower rise up to elevated height) */

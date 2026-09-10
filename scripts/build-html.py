@@ -129,7 +129,7 @@ MODEL_PAGE_TEMPLATE = r"""%%GENERATED_COMMENT%%
     <a href="#" id="toggle-font" class="corner-link top-left">sga</a>
     <a href="../../models.html" class="corner-link top-right">back</a>
     <a href="https://www.youtube.com/@jukebox.32" class="corner-link bottom-left">youtube</a>
-    <a href="https://trello.com/b/abEXFTkS" class="corner-link bottom-right">trello</a>
+    <a href="https://discord.gg/6bJySHXChG" class="corner-link bottom-right">discord</a>
 
     <div class="main-container">
         <h1><a href="../../models.html" style="color: inherit; text-decoration: none;">%%TITLE%%</a></h1>
@@ -255,7 +255,7 @@ MODELS_GRID_TEMPLATE = r"""%%GENERATED_COMMENT%%
     <a href="#" id="toggle-font" class="corner-link top-left">sga</a>
     <a href="index.html" class="corner-link top-right">home</a>
     <a href="https://www.youtube.com/@jukebox.32" class="corner-link bottom-left">youtube</a>
-    <a href="https://trello.com/b/abEXFTkS" class="corner-link bottom-right">trello</a>
+    <a href="https://discord.gg/6bJySHXChG" class="corner-link bottom-right">discord</a>
 
     <div class="main-container">
         <h1><a href="index.html" style="color: inherit; text-decoration: none;">models</a></h1>

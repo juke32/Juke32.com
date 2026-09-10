@@ -15,6 +15,10 @@
 
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "$(basename "$SCRIPT_DIR")" = "scripts" ]; prefix="$(dirname "$SCRIPT_DIR")"; else prefix="$SCRIPT_DIR"; fi
+cd "$prefix"
+
 TARGET="${1:-.}"
 MAX_SIZE=4000
 JPG_QUALITY=80

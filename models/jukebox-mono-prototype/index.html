@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mini chunky jukebox | juke^32</title>
-    <meta name="description" content="Mini chunky jukebox features a custom 12px enlarged border design printed with amazing 0.0007in precision on a calibrated laser engraver.">
-    <meta property="og:title" content="mini chunky jukebox | juke^32">
-    <meta property="og:description" content="Mini chunky jukebox features a custom 12px enlarged border design printed with amazing 0.0007in precision on a calibrated laser engraver.">
-    <meta property="og:image" content="https://juke32.com/minichunkyjuke.jpg">
-    <meta property="og:url" content="https://juke32.com/models/chunky-juke/">
+    <title>jukebox mono prototype | juke^32</title>
+    <meta name="description" content="The Jukebox Mono prototype features a custom ESP32 PCB, laser-cut wood panels, 3D-printed internal structure, and eeprom music discs.">
+    <meta property="og:title" content="jukebox mono prototype | juke^32">
+    <meta property="og:description" content="The Jukebox Mono prototype features a custom ESP32 PCB, laser-cut wood panels, 3D-printed internal structure, and eeprom music discs.">
+    <meta property="og:image" content="https://juke32.com/monoproto-box.jpg">
+    <meta property="og:url" content="https://juke32.com/models/jukebox-mono-prototype/">
     <meta property="og:type" content="website">
-    <link rel="canonical" href="https://juke32.com/models/chunky-juke/">
+    <link rel="canonical" href="https://juke32.com/models/jukebox-mono-prototype/">
     <link rel="preload" href="/assets/fonts/Monocraft.otf" as="font" type="font/otf" crossorigin>
     <link rel="preload" href="/assets/fonts/minecraft-sga.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="../../models.css">
@@ -29,7 +29,7 @@
     <a href="https://discord.gg/6bJySHXChG" class="corner-link bottom-right">discord</a>
 
     <div class="main-container">
-        <h1><a href="../../models.html" style="color: inherit; text-decoration: none;">mini chunky jukebox</a></h1>
+        <h1><a href="../../models.html" style="color: inherit; text-decoration: none;">jukebox mono prototype</a></h1>
         <div class="scroll-container">
             <div class="model-page-content">
                 <div class="media-container">
@@ -40,19 +40,36 @@
                     </div>
                 </div>
                 <div class="popup-text">
-                    <h3>mini chunky jukebox</h3>
-                    <p>Using the chunky model and a newly calibrated laser engraver I used the thinnest wood I had and printed a few lilguys.</p>
-                    <h3>design features</h3>
+                    <h3>overview</h3>
+                    <p>The first jukebox I fully finished with a PCB.. designing the PCB alone took a year for me to research and work up the courage to open KiCad.</p>
+                    <h3>key features</h3>
                     <ul>
-                        <li>Custom 12px enlarged border design</li>
-                        <li>Double wide border</li>
-                        <li>Enhanced visual presence</li>
-                        <li>Maintains Minecrafy Look and Aesthetic</li>
-                        <li>Amazing 0.0007in Precision</li>
-                        <li>so cool</li>
+                        <li>Custom ESP32 PCB (55mm x 42.5mm)</li>
+                        <li>Wi-Fi web radio streaming</li>
+                        <li>Bluetooth A2DP audio</li>
+                        <li>MP3 & WAV audio playback via microSD (may need older card type)</li>
+                        <li>MIDI & Note Block Studio (.nbs) file playback :P</li>
+                        <li>Laser-cut brass disc contacts</li>
+                        <li>Bottom comes off for easy repairs... a little too easily at this point. Planning to only make the pcb and battery replaceable (due to lack of 3d modeling skill, and glue for best speaker quality)</li>
                     </ul>
-                    <h3>notes</h3>
-                    <p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm small chunky jukebox</p>
+                    <h3>the reality of the first PCB run</h3>
+                    <p>I don't know the exact battery life yet because the first PCBs I ordered didn't work at all... the power switch doesn't work and it is always on, which would have been an issue if the I2S audio amp module wasn't left muted all the time with no way to fix unless you have a hot air rework station :p (I do, and it took me 2 hours to attempt to fix 4 boards where only 2 of them work!). Currently taking the working boards to make a working revision.</p>
+                    <h3>the journey & concept evolution</h3>
+                    <ul>
+                        <li>NFC trial: abandoned due to power, space, and complexity</li>
+                        <li>Resistor divider: Attempted a resistor divider reader, but ADC could only reliably differentiate a small handful of discs.</li>
+                        <li>Capacitor timing circuit: Each disc had unique capacitance. While clever, differentuating 2 pads with coupled capacitance makes readings impossible... I can say with certainty after a year+ of testing :p</li>
+                        <li>Digital Disc: the sleekest solution to a problem no Minecrafter knew they had yet!</li>
+                    </ul>
+                    <h3>tools & workflow</h3>
+                    <ul>
+                        <li>Inkscape & LightBurn: Laser cutting and etching vector preparation</li>
+                        <li>Shapr3D & OrcaSlicer: 3D modeling and printing internal frame components</li>
+                        <li>KiCad & JLCPCB: Custom PCB schematic, layout design, and board manufacturing (not sponsored... had to pay over $300)</li>
+                        <li>Antigravity & VS Code with PlatformIO: Firmware development, code assistance, and ESP32 flashing</li>
+                        <li>Hot Air Rework Station: 2 hours of precision soldering repairs to fix muted audio amps on prototype boards</li>
+                        <li>Brain: Figuring this whole thing out from scratch</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -67,15 +84,15 @@
         const mediaItems = [
         {
                 "type": "image",
-                "src": "minichunkyjuke.jpg"
+                "src": "monoproto-box.jpg"
         },
         {
                 "type": "image",
-                "src": "tiny juke32.png"
+                "src": "mono-BOX_2026-05-12.png"
         },
         {
                 "type": "image",
-                "src": "chunkychunk.jpg"
+                "src": "monoproto-pcb_2026-05.jpg"
         }
 ];
         let currentIndex = 0;

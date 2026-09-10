@@ -224,6 +224,9 @@ def process_video(file_path, max_size=4000, crf=26, convert_webm=False):
         print(f"  ✗ [VIDEO ERROR] Failed {src_path.name}: {e}")
         return orig_size, orig_size
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent if SCRIPT_DIR.name == "scripts" else SCRIPT_DIR
+
 def main():
     parser = argparse.ArgumentParser(description="Strip metadata, crop to 1:1 square (up to 4000x4000), and ultra-compress images & videos.")
     parser.add_argument("target", nargs="?", default="models", help="Path to image, video, or directory to compress (default: models/)")
@@ -245,7 +248,13 @@ def main():
     print(f"  Quality:  {args.quality} (Images) | CRF: {args.crf} (Videos)")
     print("-" * 60)
 
-    target_path = Path(args.target)
+    target_input = Path(args.target)
+    if target_input.is_absolute():
+        target_path = target_input
+    else:
+        target_path = (Path.cwd() / target_input).resolve()
+        if not target_path.exists():
+            target_path = (REPO_ROOT / target_input).resolve()
     if not target_path.exists():
         print(f"Error: Target path '{args.target}' does not exist.")
         sys.exit(1)

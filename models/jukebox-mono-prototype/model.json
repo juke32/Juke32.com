@@ -1,34 +1,70 @@
 {
   "slug": "jukebox-mono-prototype",
   "title": "jukebox mono prototype",
-  "tagline": "short description shown under the grid thumbnail",
-  "hover_text": "text shown when hovering the grid thumbnail",
-  "meta_description": "SEO description for search engines, ~150 chars",
-  "thumbnail": "my-thumbnail.jpg",
-  "sort_order": 0,
+  "tagline": "the first jukebox I fully finished with a PCB",
+  "hover_text": "click to view the jukebox mono prototype!",
+  "meta_description": "The Jukebox Mono prototype features a custom ESP32 PCB, laser-cut wood panels, 3D-printed internal structure, and eeprom music discs.",
+  "thumbnail": "monoproto-box.jpg",
+  "sort_order": 8,
   "sections": [
     {
-      "heading": "section title",
+      "heading": "overview",
       "type": "text",
-      "content": "Paragraph text goes here."
+      "content": "The first jukebox I fully finished with a PCB.. designing the PCB alone took a year for me to research and work up the courage to open KiCad."
     },
     {
-      "heading": "features",
+      "heading": "key features",
       "type": "list",
       "items": [
-        "Feature 1",
-        "Feature 2"
+        "Custom ESP32 PCB (55mm x 42.5mm)",
+        "Wi-Fi web radio streaming",
+        "Bluetooth A2DP audio",
+        "MP3 & WAV audio playback via microSD (may need older card type)",
+        "MIDI & Note Block Studio (.nbs) file playback :P",
+        "Laser-cut brass disc contacts",
+        "Bottom comes off for easy repairs... a little too easily at this point. Planning to only make the pcb and battery replaceable (due to lack of 3d modeling skill, and glue for best speaker quality)"
+      ]
+    },
+    {
+      "heading": "the reality of the first PCB run",
+      "type": "text",
+      "content": "I don't know the exact battery life yet because the first PCBs I ordered didn't work at all... the power switch doesn't work and it is always on, which would have been an issue if the I2S audio amp module wasn't left muted all the time with no way to fix unless you have a hot air rework station :p (I do, and it took me 2 hours to attempt to fix 4 boards where only 2 of them work!). Currently taking the working boards to make a working revision."
+    },
+    {
+      "heading": "the journey & concept evolution",
+      "type": "list",
+      "items": [
+        "NFC trial: abandoned due to power, space, and complexity",
+        "Resistor divider: Attempted a resistor divider reader, but ADC could only reliably differentiate a small handful of discs.",
+        "Capacitor timing circuit: Each disc had unique capacitance. While clever, differentuating 2 pads with coupled capacitance makes readings impossible... I can say with certainty after a year+ of testing :p",
+        "Digital Disc: the sleekest solution to a problem no Minecrafter knew they had yet!"
+      ]
+    },
+    {
+      "heading": "tools & workflow",
+      "type": "list",
+      "items": [
+        "Inkscape & LightBurn: Laser cutting and etching vector preparation",
+        "Shapr3D & OrcaSlicer: 3D modeling and printing internal frame components",
+        "KiCad & JLCPCB: Custom PCB schematic, layout design, and board manufacturing (not sponsored... had to pay over $300)",
+        "Antigravity & VS Code with PlatformIO: Firmware development, code assistance, and ESP32 flashing",
+        "Hot Air Rework Station: 2 hours of precision soldering repairs to fix muted audio amps on prototype boards",
+        "Brain: Figuring this whole thing out from scratch"
       ]
     }
   ],
   "media": [
-    {
+      {
       "type": "image",
-      "src": "my-image.jpg"
+      "src": "monoproto-box.jpg"
     },
     {
-      "type": "video",
-      "src": "my-video.webm"
+      "type": "image",
+      "src": "mono-BOX_2026-05-12.png"
+    },
+    {
+      "type": "image",
+      "src": "monoproto-pcb_2026-05.jpg"
     }
   ]
 }

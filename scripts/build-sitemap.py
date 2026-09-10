@@ -11,9 +11,13 @@ Usage:
 
 import os
 import glob
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent if SCRIPT_DIR.name == "scripts" else SCRIPT_DIR
 
 DOMAIN = "https://juke32.com"
-OUTPUT = "sitemap.xml"
+OUTPUT = str(REPO_ROOT / "sitemap.xml")
 
 
 def main():
@@ -21,16 +25,22 @@ def main():
 
     urls = []
 
-    # Find all .html files
-    for html_file in glob.glob("**/*.html", recursive=True):
-        # Skip hidden dirs, templates, generated build artifacts we don't want
-        if html_file.startswith(".") or "/_" in html_file:
-            continue
+    # Change working directory to REPO_ROOT for globbing
+    orig_cwd = os.getcwd()
+    os.chdir(REPO_ROOT)
+    try:
+        # Find all .html files
+        for html_file in glob.glob("**/*.html", recursive=True):
+            # Skip hidden dirs, templates, generated build artifacts we don't want
+            if html_file.startswith(".") or "/_" in html_file:
+                continue
 
-        if html_file == "index.html":
-            urls.append(f"{DOMAIN}/")
-        else:
-            urls.append(f"{DOMAIN}/{html_file}")
+            if html_file == "index.html":
+                urls.append(f"{DOMAIN}/")
+            else:
+                urls.append(f"{DOMAIN}/{html_file}")
+    finally:
+        os.chdir(orig_cwd)
 
     urls.sort()
 
