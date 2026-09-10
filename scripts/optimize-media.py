@@ -46,8 +46,8 @@ def format_size(bytes_size):
     else:
         return f"{bytes_size / (1024 * 1024):.2f} MB"
 
-def squash_crop_image(img, max_size=4000):
-    """Center-crop image to 1:1 square and downscale if dimensions exceed max_size."""
+def squash_crop_image(img, max_size=4600):
+    """Center-crop image to 1:1 square and downscale by half if dimensions exceed max_size (4600x4600)."""
     width, height = img.size
     side = min(width, height)
 
@@ -59,14 +59,15 @@ def squash_crop_image(img, max_size=4000):
 
     img_cropped = img.crop((left, top, right, bottom))
 
-    # Resize if larger than max_size
-    if side > max_size:
-        img_cropped = img_cropped.resize((max_size, max_size), Image.Resampling.LANCZOS)
+    # If larger than max_size (4600x4600), downscale by half
+    if width > max_size or height > max_size or side > max_size:
+        target_size = max(1, side // 2)
+        img_cropped = img_cropped.resize((target_size, target_size), Image.Resampling.LANCZOS)
 
     return img_cropped
 
-def process_image(file_path, max_size=4000, quality=80, convert_webp=False, exiftool_available=False):
-    """Strip metadata, center-crop to 1:1 square, and ultra-compress an image file."""
+def process_image(file_path, max_size=4600, quality=80, convert_webp=False, exiftool_available=False):
+    """Strip all metadata, center-crop to 1:1 square (halving if >4600x4600), and ultra-compress image file."""
     src_path = Path(file_path)
     orig_size = src_path.stat().st_size
 
@@ -80,24 +81,29 @@ def process_image(file_path, max_size=4000, quality=80, convert_webp=False, exif
             if dest_ext in [".jpg", ".jpeg"] and img.mode in ("RGBA", "P", "LA"):
                 img = img.convert("RGB")
 
-            # Crop to 1:1 square
+            # Crop to 1:1 square and halve if >4600x4600
             squared_img = squash_crop_image(img, max_size=max_size)
+
+            # Re-create image object to completely purge EXIF info/dicts from memory
+            data = list(squared_img.getdata())
+            clean_img = Image.new(squared_img.mode, squared_img.size)
+            clean_img.putdata(data)
 
             # Temp output file
             tmp_out = src_path.with_name(f"{src_path.stem}_tmp_opt{dest_ext}")
 
-            # Compression settings based on format
+            # Compression settings based on format (slow / maximum optimization)
             if dest_ext == ".webp":
-                squared_img.save(
+                clean_img.save(
                     tmp_out,
                     "WEBP",
                     quality=quality,
-                    method=6,  # Highest compression effort
+                    method=6,  # Highest compression effort (slow)
                     exact=False,
                     lossless=False
                 )
             elif dest_ext in [".jpg", ".jpeg"]:
-                squared_img.save(
+                clean_img.save(
                     tmp_out,
                     "JPEG",
                     quality=quality,
@@ -105,14 +111,14 @@ def process_image(file_path, max_size=4000, quality=80, convert_webp=False, exif
                     progressive=True
                 )
             elif dest_ext == ".png":
-                squared_img.save(
+                clean_img.save(
                     tmp_out,
                     "PNG",
                     optimize=True,
                     compress_level=9
                 )
             else:
-                squared_img.save(tmp_out, quality=quality, optimize=True)
+                clean_img.save(tmp_out, quality=quality, optimize=True)
 
         # Extra metadata stripping with exiftool if installed
         if exiftool_available:
@@ -124,15 +130,15 @@ def process_image(file_path, max_size=4000, quality=80, convert_webp=False, exif
 
         new_size = tmp_out.stat().st_size
 
-        # Replace target file if output is smaller or format changed
+        # Replace target file if output is smaller, dimensions changed, or format changed
         final_dest = src_path.with_suffix(dest_ext) if convert_webp else src_path
-        if new_size < orig_size or convert_webp:
+        if new_size < orig_size or convert_webp or clean_img.size != img.size:
             if final_dest != src_path and src_path.exists():
                 src_path.unlink()
             shutil.move(tmp_out, final_dest)
             saved = orig_size - new_size
             pct = (saved / orig_size) * 100 if orig_size > 0 else 0
-            print(f"  ✓ [IMAGE 1:1] {src_path.name} -> {final_dest.name}: {format_size(orig_size)} => {format_size(new_size)} (Saved {pct:.1f}%)")
+            print(f"  ✓ [IMAGE 1:1] {src_path.name} ({img.size[0]}x{img.size[1]} -> {clean_img.size[0]}x{clean_img.size[1]}): {format_size(orig_size)} => {format_size(new_size)} (Saved {pct:.1f}%)")
             return orig_size, new_size
         else:
             if tmp_out.exists():

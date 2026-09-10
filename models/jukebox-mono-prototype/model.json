@@ -1,11 +1,11 @@
 {
-  "slug": "my-model-name",
+  "slug": "jukebox-mono-prototype",
   "title": "jukebox mono prototype",
   "tagline": "short description shown under the grid thumbnail",
   "hover_text": "text shown when hovering the grid thumbnail",
   "meta_description": "SEO description for search engines, ~150 chars",
   "thumbnail": "my-thumbnail.jpg",
-  "sort_order": 99,
+  "sort_order": 0,
   "sections": [
     {
       "heading": "section title",
