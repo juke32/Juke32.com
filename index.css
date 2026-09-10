@@ -140,7 +140,7 @@ h1 sup a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 50%; /* Limit width to prevent overlap */
+    max-width: 50%;
 }
 
 .corner-link:hover {
@@ -224,13 +224,13 @@ h1 sup a {
 h1:hover #superscript-link .digit-3 {
     animation:
         bounce3-enter 0.75s cubic-bezier(0.33, 1, 0.68, 1) forwards,
-        float3 4.2s ease-in-out 0.75s infinite;
+        float3 2.8s ease-in-out 0.75s infinite;
 }
 
 h1:hover #superscript-link .digit-2 {
     animation:
         bounce2-enter 1.0s cubic-bezier(0.33, 1, 0.68, 1) forwards,
-        float2 4.2s ease-in-out 1.0s infinite;
+        float2 2.8s ease-in-out 1.0s infinite;
 }
 
 #superscript-link {

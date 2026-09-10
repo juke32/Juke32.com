@@ -302,11 +302,10 @@ body.rainbow h1 {
     animation: rainbow 10s linear infinite, shimmer 10s linear infinite;
 }
 
-/* Add corner link styles */
 .corner-link {
     position: fixed;
     text-decoration: none;
-    color: inherit;
+    color: rgba(255, 255, 255, 0.65);
     cursor: pointer;
     z-index: 1000;
     transition: color 0.3s, font-size 0.3s;
@@ -315,9 +314,8 @@ body.rainbow h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 36%;
-    color: rgba(255, 255, 255, 0.32);
     font-family: var(--current-font);
-    text-shadow: #1a1a1a 0.1vh 0.1vh 0.2vh;
+    text-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.9);
 }
 
 .corner-link:hover {
