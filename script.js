@@ -188,65 +188,64 @@ document.addEventListener('DOMContentLoaded', () => {
             switch (box.querySelector('img').alt) {
                 case 'lapis-v1':
                     mediaItems = [
-                        { type: 'image', src: 'assets/models/lapis-v1-initial.jpg' },
-                        { type: 'image', src: 'assets/models/lapis-v1-mainn.jpg' },
-                        { type: 'image', src: 'assets/models/lapis-v1-back.jpg' },
-                        { type: 'image', src: 'assets/models/lapis-v1-internal.jpg' },
-                        { type: 'image', src: 'assets/models/lapis-v1-compare.jpg' },
-                        { type: 'image', src: 'assets/models/lapis-v1-main.jpg' },
-                        { type: 'image', src: 'assets/models/lapis-v1-work.jpg' },
-                        //{ type: 'video', src: 'assets/videos/lapis-v1-demo.mp4' }
+                        { type: 'image', src: 'models/lapis-v1/lapis-v1-initial.jpg' },
+                        { type: 'image', src: 'models/lapis-v1/lapis-v1-mainn.jpg' },
+                        { type: 'image', src: 'models/lapis-v1/lapis-v1-back.jpg' },
+                        { type: 'image', src: 'models/lapis-v1/lapis-v1-internal.jpg' },
+                        { type: 'image', src: 'models/lapis-v1/lapis-v1-compare.jpg' },
+                        { type: 'image', src: 'models/lapis-v1/lapis-v1-main.jpg' },
+                        { type: 'image', src: 'models/lapis-v1/lapis-v1-work.jpg' },
                     ];
                     break;
 
                 case 'bluetooth':
                     mediaItems = [
-                        { type: 'image', src: 'assets/models/bluetooth.jpg' },
-                        { type: 'image', src: 'assets/models/bluetooth_internal.jpg' },
-                        { type: 'image', src: 'assets/models/ble+pig_stain.jpg' },
-                        { type: 'image', src: 'assets/models/bluetooth_ble.jpg' },
-                        { type: 'image', src: 'assets/models/bluetooth_table.jpg' },
-                        { type: 'video', src: 'assets/models/bluetooth-tiktok-compressed.webm' } // may want to redo/recrop lol
+                        { type: 'image', src: 'models/bluetooth/bluetooth.jpg' },
+                        { type: 'image', src: 'models/bluetooth/bluetooth_internal.jpg' },
+                        { type: 'image', src: 'models/bluetooth/ble+pig_stain.jpg' },
+                        { type: 'image', src: 'models/bluetooth/bluetooth_ble.jpg' },
+                        { type: 'image', src: 'models/bluetooth/bluetooth_table.jpg' },
+                        { type: 'video', src: 'models/bluetooth/bluetooth-tiktok-compressed.webm' }
                     ];
                     break;
 
                 case 'dirt':
                     mediaItems = [
-                        { type: 'image', src: 'assets/models/dirt_mp3.jpg' },
-                        { type: 'image', src: 'assets/models/dirt_meets_steve.jpg' },
-                        { type: 'image', src: 'assets/models/dirt_stain.jpg' },
-                        { type: 'image', src: 'assets/models/dirt_naked.jpg' }
+                        { type: 'image', src: 'models/dirt/dirt_mp3.jpg' },
+                        { type: 'image', src: 'models/dirt/dirt_meets_steve.jpg' },
+                        { type: 'image', src: 'models/dirt/dirt_stain.jpg' },
+                        { type: 'image', src: 'models/dirt/dirt_naked.jpg' }
                     ];
                     break;
 
                 case 'chunky juke':
                     mediaItems = [
-                        { type: 'image', src: 'assets/models/minichunkyjuke.jpg' },
-                        { type: 'image', src: 'assets/models/tiny juke32.png' },
-                        { type: 'image', src: 'assets/models/chunkychunk.jpg' }
+                        { type: 'image', src: 'models/chunky-juke/minichunkyjuke.jpg' },
+                        { type: 'image', src: 'models/chunky-juke/tiny juke32.png' },
+                        { type: 'image', src: 'models/chunky-juke/chunkychunk.jpg' }
                     ];
                     break;
 
                 case 'buttoncontrol':
                     mediaItems = [
-                        { type: 'image', src: 'assets/models/buttoncontroljuke.jpg' },
-                        { type: 'image', src: 'assets/models/buttoncontrolchunky.jpg' },
-                        { type: 'image', src: 'assets/models/buttoncontrolproto.jpg' }
+                        { type: 'image', src: 'models/buttoncontrol/buttoncontroljuke.jpg' },
+                        { type: 'image', src: 'models/buttoncontrol/buttoncontrolchunky.jpg' },
+                        { type: 'image', src: 'models/buttoncontrol/buttoncontrolproto.jpg' }
                     ];
                     break;
 
                 case 'paper juke':
                     mediaItems = [
-                        { type: 'image', src: 'assets/models/paperjuke.jpg' },
-                        { type: 'image', src: 'assets/models/paperjukebox.jpg' },
-                        { type: 'image', src: 'assets/models/14px mini jukebox cutout (enlarged).png' }
+                        { type: 'image', src: 'models/paper-juke/paperjuke.jpg' },
+                        { type: 'image', src: 'models/paper-juke/paperjukebox.jpg' },
+                        { type: 'image', src: 'models/paper-juke/14px mini jukebox cutout (enlarged).png' }
                     ];
                     break;
 
                 case 'first try':
                     mediaItems = [
-                        { type: 'image', src: 'assets/models/first try.jpg' },
-                        { type: 'image', src: 'assets/models/ben_chunky.jpg' }
+                        { type: 'image', src: 'models/first-try/first try.jpg' },
+                        { type: 'image', src: 'models/first-try/ben_chunky.jpg' }
                     ];
                     break;
 
