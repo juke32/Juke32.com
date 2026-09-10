@@ -1,0 +1,34 @@
+{
+  "slug": "my-model-name",
+  "title": "jukebox mono prototype",
+  "tagline": "short description shown under the grid thumbnail",
+  "hover_text": "text shown when hovering the grid thumbnail",
+  "meta_description": "SEO description for search engines, ~150 chars",
+  "thumbnail": "my-thumbnail.jpg",
+  "sort_order": 99,
+  "sections": [
+    {
+      "heading": "section title",
+      "type": "text",
+      "content": "Paragraph text goes here."
+    },
+    {
+      "heading": "features",
+      "type": "list",
+      "items": [
+        "Feature 1",
+        "Feature 2"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "my-image.jpg"
+    },
+    {
+      "type": "video",
+      "src": "my-video.webm"
+    }
+  ]
+}
