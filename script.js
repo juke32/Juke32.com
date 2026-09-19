@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCurrentTrack('PrettyDecent - Juke.mp3');
         });
 
+        h1.addEventListener('touchstart', () => {
+            playBackgroundAudio();
+            updateCurrentTrack('PrettyDecent - Juke.mp3');
+        }, { passive: true });
+
         h1.addEventListener('mouseleave', () => {
             h1.classList.remove('hovered');
             toggleParticles(2);
@@ -36,6 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (originalSrc && originalSrc.includes('assets/sound/')) {
             const fileName = originalSrc.split('assets/sound/')[1];
             audio.src = getAsset('assets/sound/' + fileName);
+        }
+    }
+
+    function playBackgroundAudio() {
+        if (audio) {
+            audio.play().catch(e => console.log('Playback blocked:', e));
         }
     }
 
@@ -137,10 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    document.addEventListener('click', throttle((event) => {
+    document.addEventListener('pointerdown', throttle((event) => {
         if (!event.target.closest('button, a, input, select, textarea')) {
             const randomMp3 = mp3Files[Math.floor(Math.random() * mp3Files.length)];
-            new Audio(randomMp3).play();
+            new Audio(randomMp3).play().catch(e => console.log('Playback blocked:', e));
             showCurrentTrack(randomMp3);
         }
     }, 240)); // Throttle clicks to every 300ms
