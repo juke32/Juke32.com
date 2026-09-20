@@ -126,35 +126,22 @@ document.addEventListener('DOMContentLoaded', () => {
         'steelguitar', 'vibraphone', 'violin', 'evie'
     ].map(file => getAsset(`assets/note/${file}.mp3`));
 
-    // Throttle function to limit click event frequency
-    function throttle(func, limit) {
-        let lastFunc;
-        let lastRan;
-        return function () {
-            const context = this;
-            const args = arguments;
-            if (!lastRan) {
-                func.apply(context, args);
-                lastRan = Date.now();
-            } else {
-                clearTimeout(lastFunc);
-                lastFunc = setTimeout(function () {
-                    if ((Date.now() - lastRan) >= limit) {
-                        func.apply(context, args);
-                        lastRan = Date.now();
-                    }
-                }, limit - (Date.now() - lastRan));
-            }
-        };
-    }
+    const noteAudio = new Audio();
+    let lastNoteTime = 0;
 
-    document.addEventListener('pointerdown', throttle((event) => {
+    document.addEventListener('click', (event) => {
         if (!event.target.closest('button, a, input, select, textarea')) {
+            const now = Date.now();
+            if (now - lastNoteTime < 240) return;
+            lastNoteTime = now;
+
             const randomMp3 = mp3Files[Math.floor(Math.random() * mp3Files.length)];
-            new Audio(randomMp3).play().catch(e => console.log('Playback blocked:', e));
+            noteAudio.src = randomMp3;
+            noteAudio.currentTime = 0;
+            noteAudio.play().catch(e => console.log('Playback blocked:', e));
             showCurrentTrack(randomMp3);
         }
-    }, 240)); // Throttle clicks to every 300ms
+    });
 
     let trackDisplayTimeout;
     function updateCurrentTrack(trackName) {
